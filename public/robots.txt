@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://notion_blog.vercel.app
+Host: https://giho.vercel.app
 
 # Sitemaps
-Sitemap: https://notion_blog.vercel.app/sitemap.xml
+Sitemap: https://giho.vercel.app/sitemap.xml
