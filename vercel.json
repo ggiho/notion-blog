@@ -7,5 +7,7 @@
     "enabled": true
   },
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "installCommand": "npm install",
+  "buildCommand": "npm run build"
 }
