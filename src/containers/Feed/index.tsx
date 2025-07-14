@@ -18,12 +18,13 @@ const Feed: React.FC<Props> = ({ categories, tags, posts }) => {
   const [q, setQ] = useState("")
 
   return (
-    <div className="block md:grid grid-cols-12 gap-6">
+    <div className="block md:grid grid-cols-12 gap-8">
       <div className="hidden lg:block col-span-2">
-        {/* <Lists.CategoryList data={categories} /> */}
-        <Lists.TagList data={tags} />
+        <div className="sticky top-24 space-y-6">
+          <Lists.TagList data={tags} />
+        </div>
       </div>
-      <div className="col-span-12 lg:col-span-7">
+      <div className="col-span-12 lg:col-span-7 space-y-8">
         <Cards.MobileProfileCard />
         <SearchInput value={q} onChange={(e) => setQ(e.target.value)} />
         <Lists.TagList className="block lg:hidden" data={tags} />
@@ -32,10 +33,12 @@ const Feed: React.FC<Props> = ({ categories, tags, posts }) => {
         <Footer className="block lg:hidden flex justify-center pb-8" />
       </div>
       <div className="hidden lg:block lg:col-span-3">
-        <Cards.ProfileCard />
-        <Cards.ServiceCard />
-        <Cards.ContactCard />
-        <Footer className="pt-4" />
+        <div className="sticky top-24 space-y-6">
+          <Cards.ProfileCard />
+          <Cards.ServiceCard />
+          <Cards.ContactCard />
+          <Footer className="pt-4" />
+        </div>
       </div>
     </div>
   )

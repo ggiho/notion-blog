@@ -80,14 +80,16 @@ body {
   
   /* Card styles */
   .card {
-    @apply bg-white dark:bg-gray-900 rounded-xl;
+    @apply bg-white dark:bg-gray-900 rounded-2xl;
     @apply border border-gray-200 dark:border-gray-800;
-    @apply transition-all duration-200;
+    @apply transition-all duration-300 ease-out;
+    @apply shadow-sm hover:shadow-xl;
   }
   
   .card-hover {
-    @apply hover:shadow-lg hover:-translate-y-0.5;
+    @apply hover:shadow-2xl hover:-translate-y-1;
     @apply hover:border-gray-300 dark:hover:border-gray-700;
+    @apply hover:shadow-gray-200/50 dark:hover:shadow-black/30;
   }
   
   /* Button styles */
@@ -142,6 +144,20 @@ body {
   @keyframes fade-in {
     from { opacity: 0; }
     to { opacity: 1; }
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent;
+  }
+  
+  /* Notion content styling */
+  .notion-page {
+    @apply !max-w-none;
+  }
+  
+  .notion-h {
+    @apply scroll-mt-24;
   }
 }
 

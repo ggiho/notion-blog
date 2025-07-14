@@ -63,7 +63,7 @@ const PostList: React.FC<Props> = ({ q, posts }) => {
           </p>
         </div>
       )}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 animate-in">
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr animate-in">
         {filteredPosts.map((post) => (
           <PostCard key={post.id} data={post} />
         ))}
