@@ -28,7 +28,7 @@ export async function getStaticProps() {
         },
         posts: filteredPost,
       },
-      revalidate: 1,
+      revalidate: 60, // 60초마다 자동 재검증
     }
   } catch (error) {
     return

@@ -1,5 +1,4 @@
 import Header from "./Header"
-import PropTypes from "prop-types"
 import MetaConfig, { MetaConfigProps } from "./MetaConfig"
 
 type Props = {
@@ -28,10 +27,6 @@ const Layout: React.FC<Props> = ({
       </div>
     </div>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node,
 }
 
 export default Layout

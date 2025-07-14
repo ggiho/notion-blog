@@ -1,76 +1,197 @@
-# morethan-log
+# 🚀 Notion Blog
 
-<img width="1715" alt="image" src="https://user-images.githubusercontent.com/72514247/209824600-ca9c8acc-6d2d-4041-9931-43e34b8a9a5f.png">
+> Notion을 CMS로 활용하는 개발자를 위한 Next.js 블로그 템플릿
 
-Next.js static blog using Notion as a Content Management System (CMS). Supports both Blog format Post as well as Page format for Resume. Deployed using Vercel.
+[![Next.js](https://img.shields.io/badge/Next.js-12.2-black?logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-4.9-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.2-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
+[![Notion API](https://img.shields.io/badge/Notion-API-000000?logo=notion)](https://developers.notion.com/)
 
-[Demo Blog](https://morethan-log.vercel.app) | [Demo Resume](https://morethan-log.vercel.app/resume)
+[데모 사이트](https://notion-blog.vercel.app) | [Notion 템플릿](https://giho.notion.site/e447025afa8742f38782fc1c4cc344ac)
 
-## Features
+## ✨ 특징
 
-**📒 Writing posts using notion**
+### 📝 간편한 콘텐츠 관리
+- **Notion이 곧 CMS**: 별도의 관리자 페이지 없이 Notion에서 직접 글 작성
+- **실시간 동기화**: 최대 60초 내 자동 반영 (ISR 적용)
+- **마크다운 지원**: Notion의 모든 블록 타입 지원
 
-- No need of commiting to Github for posting anything to your website.
-- Posts made on Notion are automaticaly updated on your site.
+### 🎨 현대적인 디자인
+- **반응형 레이아웃**: 모바일, 태블릿, 데스크톱 완벽 지원
+- **다크모드**: 시스템 설정 연동 및 수동 전환
+- **커스터마이징**: Tailwind CSS로 손쉬운 스타일 변경
 
-**📄 Use as a page as resume**
+### 🔧 개발자 친화적
+- **TypeScript**: 완벽한 타입 안전성
+- **최적화된 성능**: Next.js ISR + 이미지 최적화
+- **SEO 최적화**: 동적 메타태그, OG 이미지, 사이트맵 자동 생성
 
-- Useful for generating full page sites using Notion.
-- Can be used for Resume, Portfolios etc.
+### 🛠️ 강력한 기능
+- **태그 & 카테고리**: 콘텐츠 분류 및 필터링
+- **검색 기능**: 실시간 검색
+- **댓글 시스템**: GitHub Issues 기반 Utterances
+- **분석 도구**: Google Analytics 연동
 
-**👀 SEO friendly**
+## 🚀 5분 만에 시작하기
 
-- Dynamically generates OG IMAGEs (thumbnails!) for posts. ([og-image-korean](https://github.com/morethanmin/og-image-korean)).
-- Dynamically creates sitemap for posts.
+### 사전 준비
+- Node.js 14.0 이상
+- GitHub 계정
+- Vercel 계정 (무료)
 
-**🤖 Customisable and Supports various plugin through CONFIG**
+### 1️⃣ Notion 페이지 준비
 
-- Your profile information can be updated through Config. (`site.config.js`)
-- Plugins support includes, Google Analytics, Search Console and also Commenting using Github Issues(Utterances) or Cusdis.
+1. [템플릿 복제하기](https://giho.notion.site/e447025afa8742f38782fc1c4cc344ac) → "Duplicate" 클릭
+2. 우측 상단 "Share" → "Share to web" 활성화
+3. 링크에서 페이지 ID 복사
+   ```
+   https://notion.site/[이 부분이 PAGE_ID]?v=xxx
+   ```
 
-## Getting Started
+### 2️⃣ 프로젝트 설정
 
-1. Star this repo.
-2. [Fork](https://github.com/morethanmin/morethan-log/fork) the repo to your Profile.
-3. Duplicate [this Notion template](https://quasar-season-ed5.notion.site/12c38b5f459d4eb9a759f92fba6cea36?v=2e7962408e3842b2a1a801bf3546edda), and Share to Web.
-4. Copy the Web Link and keep note of the Notion Page Id from the Link which will be in this format [username.notion.site/`NOTION_PAGE_ID`?v=`VERSION_ID`].
-5. Clone your forked repo and then customize `site.config.js` based on your preference.
-6. Deploy on Vercel, with the following environment variables.
+```bash
+# 템플릿 사용
+npx create-next-app my-blog --example https://github.com/ggiho/notion-blog
 
-   - `NOTION_PAGE_ID` (Required): The Notion page Id got from the Share to Web URL.
-   - `GOOGLE_MEASUREMENT_ID` : For Google analytics Plugin.
-   - `GOOGLE_SITE_VERIFICATION` : For Google search console Plugin.
+# 또는 직접 클론
+git clone https://github.com/ggiho/notion-blog.git my-blog
+cd my-blog
+npm install
+```
 
-## Contributing
+### 3️⃣ 환경변수 설정
 
-Check out the [Contributing Guide](.github/CONTRIBUTING.md).
+```bash
+# .env.local 생성
+echo "NOTION_PAGE_ID=your_page_id_here" > .env.local
+```
 
-### Contributors
+### 4️⃣ 로컬 실행
 
-<!--
-Contributors template:
-<a href="https://github.com/{username}"><img src="{src}" width="50px" alt="{username}" /></a>&nbsp;&nbsp;
--->
+```bash
+npm run dev
+# http://localhost:3000 접속
+```
 
-<p>
-<a href="https://github.com/kvaishak"><img src="https://avatars.githubusercontent.com/u/25531121?v=4" width="50px" alt="kvaishak" /></a>&nbsp;&nbsp;<a href="https://github.com/jhk0530"><img src="https://avatars.githubusercontent.com/u/6457691?s=120&v=4" width="50px" alt="jhk0530" /></a>&nbsp;&nbsp;<a href="https://github.com/i99dev"><img src="https://avatars.githubusercontent.com/u/10709888?s=120&v=4" width="50px" alt="i99dev" /></a>&nbsp;&nbsp;<a href="https://github.com/JaeSang1998"><img src="https://avatars.githubusercontent.com/u/58258782?s=120&v=4" width="50px" alt="JaeSang1998" /></a>&nbsp;&nbsp;<a href="https://github.com/vaishak-kaippanchery-liqid"><img src="https://avatars.githubusercontent.com/u/93523060?s=120&v=4" width="50px" alt="vaishak-kaippanchery-liqid" /></a>&nbsp;&nbsp;<a href="https://github.com/itjustbong"><img src="https://avatars.githubusercontent.com/u/29947261?v=4" width="50px" alt="itjustbong" /></a>&nbsp;&nbsp;<a href="https://github.com/ddarkr"><img src="https://avatars.githubusercontent.com/u/6638675?v=4" width="50px" alt="ddarkr" /></a>&nbsp;&nbsp;<a href="https://github.com/lisiver"><img src="https://avatars.githubusercontent.com/u/46680792?v=4" width="50px" alt="lisiver" /></a>&nbsp;&nbsp;<a href="https://github.com/Octoping925"><img src="https://avatars.githubusercontent.com/u/53991994?v=4" width="50px" alt="Octoping925" /></a>&nbsp;&nbsp;<a href="https://github.com/linnilsupak"><img src="https://avatars.githubusercontent.com/u/39083566?v=4" width="50px" alt="linnilsupak" /></a>&nbsp;&nbsp;
+## 📦 Vercel 배포
+
+### 자동 배포 (추천)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fggiho%2Fnotion-blog&env=NOTION_PAGE_ID&envDescription=Notion%20%ED%8E%98%EC%9D%B4%EC%A7%80%20ID&envLink=https%3A%2F%2Fgithub.com%2Fggiho%2Fnotion-blog%23%ED%99%98%EA%B2%BD%EB%B3%80%EC%88%98)
+
+### 수동 배포
+
+1. GitHub에 푸시
+2. [Vercel](https://vercel.com/new) → Import Git Repository
+3. 환경변수 추가:
+   - `NOTION_PAGE_ID`: 필수
+   - `REVALIDATION_SECRET`: 선택 (On-demand ISR용)
+
+## ⚙️ 커스터마이징
+
+### 기본 설정 (`site.config.js`)
+
+```javascript
+const CONFIG = {
+  // 프로필 설정
+  profile: {
+    name: "Your Name",
+    role: "Frontend Developer",
+    bio: "I love coding",
+    email: "your@email.com",
+    github: "yourusername",
+    linkedin: "yourprofile",
+  },
+  
+  // 블로그 설정
+  blog: {
+    title: "My Dev Blog",
+    description: "개발 일기와 학습 기록",
+    theme: "auto", // 'light' | 'dark' | 'auto'
+  },
+  
+  // SEO 설정
+  seo: {
+    keywords: ["개발", "프로그래밍", "JavaScript"],
+  },
+  
+  // 언어 설정
+  lang: "ko-KR", // 한국어
+}
+```
+
+### 스타일 커스터마이징
+
+```css
+/* styles/globals.css */
+:root {
+  --primary-color: #0070f3;
+  --secondary-color: #ff6b6b;
+}
+```
+
+## 🔄 콘텐츠 업데이트
+
+### 자동 업데이트
+- 기본적으로 60초마다 자동 갱신
+- 페이지 방문 시 백그라운드에서 체크
+
+### 즉시 업데이트
+```bash
+# API 호출로 즉시 갱신
+curl -X POST https://your-blog.vercel.app/api/revalidate \
+  -H "Content-Type: application/json" \
+  -d '{"secret": "your-secret"}'
+```
+
+### 자동화 옵션
+- **GitHub Actions**: 주기적 갱신
+- **Zapier/Make**: Notion 변경 감지
+- **웹훅**: 커스텀 트리거
+
+자세한 내용은 [자동화 가이드](./AUTOMATION_GUIDE.md) 참조
+
+## 📁 프로젝트 구조
+
+```
+notion-blog/
+├── src/
+│   ├── components/      # 재사용 컴포넌트
+│   ├── containers/      # 페이지 컨테이너
+│   ├── hooks/          # 커스텀 훅
+│   ├── libs/           # 유틸리티 함수
+│   ├── pages/          # Next.js 페이지
+│   ├── styles/         # 글로벌 스타일
+│   └── types/          # TypeScript 타입
+├── public/             # 정적 파일
+├── site.config.js      # 사이트 설정
+└── package.json
+```
+
+## 🤝 기여하기
+
+이슈와 PR은 언제나 환영합니다!
+
+1. Fork 하기
+2. Feature 브랜치 생성 (`git checkout -b feature/amazing`)
+3. 커밋 (`git commit -m 'Add amazing feature'`)
+4. Push (`git push origin feature/amazing`)
+5. Pull Request 생성
+
+## 📝 라이선스
+
+MIT License - 자유롭게 사용하세요!
+
+## 🙏 크레딧
+
+- [morethan-log](https://github.com/morethanmin/morethan-log) - 원본 프로젝트
+- [Next.js](https://nextjs.org/) - React 프레임워크
+- [Notion API](https://developers.notion.com/) - 콘텐츠 관리
+- [Vercel](https://vercel.com/) - 호스팅 플랫폼
+
+---
+
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/ggiho">ggiho</a>
 </p>
-
-## Support
-
-morethan-log is an MIT-licensed open source project. It can grow thanks to the sponsors and support from the amazing backers.
-
-### Sponsors
-
-<!--
-Sponsors template:
-<a href="https://github.com/{uesrname}"><img src="{src}" width="50px" alt="{username}" /></a>&nbsp;&nbsp;
--->
-
-<p>
-<a href="https://github.com/siyeons"><img src="https://avatars.githubusercontent.com/u/35549653?v=4" width="50px" alt="siyeons" /></a>&nbsp;&nbsp;
-</p>
-
-## License
-
-The [MIT License](LICENSE).

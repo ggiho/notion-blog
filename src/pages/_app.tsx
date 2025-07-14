@@ -6,6 +6,7 @@ import '@styles/notion.css'
 import useThemeEffect from '@hooks/useThemeEffect'
 import useGtagEffect from '@hooks/useGtagEffect'
 import Scripts from '@components/Scripts'
+import AutoRefresh from '@components/AutoRefresh'
 import { NextPage } from 'next'
 import { ReactElement, ReactNode } from 'react'
 import { AppProps } from 'next/app'
@@ -26,6 +27,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <>
       <Scripts />
+      <AutoRefresh interval={300000} />
       {getLayout(<Component {...pageProps} />)}
     </>
   )

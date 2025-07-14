@@ -6,30 +6,30 @@ const CONFIG = {
     role: "Database Administrator",
     bio: "Aurora for MySQL 운영 중",
     email: "wasd92@naver.com",
-    linkedin: "성지호",
-    github: "",
+    linkedin: "giho-seong",
+    github: "ggiho",
     instagram: "",
   },
   projects: [
     {
-      name: `morethan-log`,
-      href: "https://github.com/ggiho/morethan-log",
+      name: `notion-blog`,
+      href: "https://github.com/ggiho/notion-blog",
     },
   ],
   // blog setting (required)
   blog: {
-    title: "BLOG",
-    description: "welcome to giho blog!",
+    title: "Giho's Tech Blog",
+    description: "Database, DevOps, and Development Notes",
     theme: "light", // ['light', 'dark', 'auto']
   },
 
   // CONFIG configration (required)
   link: "https://giho.vercel.app",
   since: 2023, // If leave this empty, current year will be used.
-  lang: "en-US", // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES', 'ko-KR']
+  lang: "ko-KR", // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES', 'ko-KR']
   ogImageGenerateURL: "https://og-image-korean.vercel.app", // The link to generate OG image, don't end with a slash
   seo: {
-    keywords: ["Blog", "Website", "Notion"],
+    keywords: ["Database", "MySQL", "Aurora", "DynamoDB", "DevOps", "AWS", "Tech Blog"],
   },
 
   // notion configuration (required)
@@ -53,7 +53,7 @@ const CONFIG = {
   utterances: {
     enable: true,
     config: {
-      repo: "ggiho/morethan-log",
+      repo: "ggiho/notion-blog",
       "issue-term": "og:title",
       label: "💬 Utterances",
     },

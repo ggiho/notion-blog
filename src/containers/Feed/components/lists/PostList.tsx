@@ -1,7 +1,7 @@
 import PostCard from "@components/PostCard"
 import { TPosts } from "@/src/types"
 import { useRouter } from "next/router"
-import React, { useEffect, useState } from "react"
+import React, { useMemo } from "react"
 import { DEFAULT_CATEGORY } from "@/src/constants"
 
 type Props = {
@@ -11,57 +11,55 @@ type Props = {
 
 const PostList: React.FC<Props> = ({ q, posts }) => {
   const router = useRouter()
-  const [filteredPosts, setFilteredPosts] = useState(posts)
 
   const currentTag = `${router.query.tag || ``}` || undefined
   const currentCategory = `${router.query.category || ``}` || DEFAULT_CATEGORY
   const currentOrder = `${router.query.order || ``}` || "desc"
 
-  useEffect(() => {
-    setFilteredPosts(() => {
-      let filteredPosts = posts
-      // keyword
-      filteredPosts = filteredPosts.filter((post) => {
+  const filteredPosts = useMemo(() => {
+    let filtered = posts
+
+    // keyword search
+    if (q) {
+      filtered = filtered.filter((post) => {
         const tagContent = post.tags ? post.tags.join(" ") : ""
         const searchContent = post.title + post.summary + tagContent
         return searchContent.toLowerCase().includes(q.toLowerCase())
       })
+    }
 
-      // tag
-      if (currentTag) {
-        filteredPosts = filteredPosts.filter(
-          (post) => post && post.tags && post.tags.includes(currentTag)
-        )
-      }
+    // tag filter
+    if (currentTag) {
+      filtered = filtered.filter(
+        (post) => post.tags?.includes(currentTag)
+      )
+    }
 
-      // category
-      if (currentCategory !== DEFAULT_CATEGORY) {
-        filteredPosts = filteredPosts.filter(
-          (post) =>
-            post && post.category && post.category.includes(currentCategory)
-        )
-      }
-      // order
-      if (currentOrder !== "desc") {
-        filteredPosts = filteredPosts.reverse()
-      }
+    // category filter
+    if (currentCategory !== DEFAULT_CATEGORY) {
+      filtered = filtered.filter(
+        (post) => post.category?.includes(currentCategory)
+      )
+    }
 
-      return filteredPosts
-    })
-  }, [q, currentTag, currentCategory, currentOrder, setFilteredPosts, posts])
+    // order
+    if (currentOrder !== "desc") {
+      filtered = [...filtered].reverse()
+    }
+
+    return filtered
+  }, [q, currentTag, currentCategory, currentOrder, posts])
 
   return (
-    <>
-      <div className="my-2">
-        {!filteredPosts.length && (
-          <p className="text-gray-500 dark:text-gray-300">Nothing! 😺</p>
-        )}
-        {filteredPosts.map((post) => (
-          <PostCard key={post.id} data={post} />
-        ))}
-      </div>
-    </>
+    <div className="my-2">
+      {!filteredPosts.length && (
+        <p className="text-gray-500 dark:text-gray-300">Nothing! 😺</p>
+      )}
+      {filteredPosts.map((post) => (
+        <PostCard key={post.id} data={post} />
+      ))}
+    </div>
   )
 }
 
-export default PostList
+export default React.memo(PostList)

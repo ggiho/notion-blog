@@ -20,21 +20,27 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params: { slug } }: any) {
+export async function getStaticProps({ params }: { params: { slug: string } }) {
+  const { slug } = params;
   try {
     //includePages: true
     const posts = await getPosts()
     const post = posts.find((t) => t.slug === slug)
-    const blockMap = await getPostBlocks(post?.id!)
+    if (!post?.id) {
+      return {
+        notFound: true,
+      }
+    }
+    const blockMap = await getPostBlocks(post.id)
 
     return {
       props: { post, blockMap },
-      revalidate: 1,
+      revalidate: 60, // 60초마다 자동 재검증
     }
   } catch (error) {
     return {
       props: {},
-      revalidate: 1,
+      revalidate: 60, // 60초마다 자동 재검증
     }
   }
 }
@@ -55,7 +61,7 @@ DetailPage.getLayout = function getlayout(page) {
     if (CONFIG.ogImageGenerateURL)
       return `${CONFIG.ogImageGenerateURL}/${encodeURIComponent(
         page.props?.post.title
-      )}.png?theme=dark&md=1&fontSize=125px&images=https%3A%2F%2Fmorethan-log.vercel.app%2Flogo-for-dark-bg.svg`
+      )}.png?theme=dark&md=1&fontSize=125px&images=https%3A%2F%2Fnotion_blog.vercel.app%2Flogo-for-dark-bg.svg`
   }
 
   const getMetaConfig = () => {
