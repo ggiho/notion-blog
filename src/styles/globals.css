@@ -2,117 +2,171 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    /* Modern color palette */
+    --background: 255 255 255;
+    --foreground: 17 17 17;
+    --muted: 115 115 115;
+    --border: 229 231 235;
+    --accent: 59 130 246;
+    --accent-foreground: 255 255 255;
+    --destructive: 239 68 68;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 10 10 10;
+    --foreground: 250 250 250;
+    --muted: 163 163 163;
+    --border: 39 39 42;
+    --accent: 96 165 250;
+  }
+}
+
 html {
-  font-family: Pretendard, Roboto, sans-serif;
-  --scrollbarBG: #ffffff00;
-  --thumbBG: #b8b8b8;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  @apply antialiased scroll-smooth;
 }
-body::-webkit-scrollbar {
-  width: 5px;
+
+/* Modern scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
 }
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-700 rounded-full;
+  @apply hover:bg-gray-400 dark:hover:bg-gray-600;
+}
+
 body {
   scrollbar-width: thin;
-  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
-}
-body::-webkit-scrollbar-track {
-  background: var(--scrollbarBG);
-}
-body::-webkit-scrollbar-thumb {
-  background-color: var(--thumbBG);
+  @apply bg-[rgb(var(--background))] text-[rgb(var(--foreground))];
+  @apply transition-colors duration-300;
 }
 
 ::selection {
-  background: rgba(45, 170, 219, 0.3);
+  @apply bg-blue-200 dark:bg-blue-900/50;
 }
 
 .wrapper {
-  min-height: 100vh;
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: stretch;
-  justify-content: flex-start;
-  flex-direction: column;
+  @apply min-h-screen flex flex-col;
 }
 
+/* Modern sticky navigation */
 .sticky-nav {
-  position: sticky;
-  z-index: 40;
-  top: -1px;
-  backdrop-filter: blur(5px);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0, 1);
-  border-bottom-color: transparent;
-}
-
-.remove-sticky {
-  position: unset;
+  @apply sticky z-50 top-0;
+  @apply backdrop-blur-xl bg-white/80 dark:bg-black/80;
+  @apply border-b border-transparent;
+  @apply transition-all duration-300 ease-out;
 }
 
 .sticky-nav-full {
-  @apply border-b border-opacity-50 border-gray-200 dark:border-gray-600 dark:border-opacity-50;
+  @apply border-gray-200/50 dark:border-gray-800/50;
+  @apply shadow-sm;
 }
 
+/* Modern utility classes */
+@layer components {
+  /* Container */
+  .container-wide {
+    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+  
+  /* Card styles */
+  .card {
+    @apply bg-white dark:bg-gray-900 rounded-xl;
+    @apply border border-gray-200 dark:border-gray-800;
+    @apply transition-all duration-200;
+  }
+  
+  .card-hover {
+    @apply hover:shadow-lg hover:-translate-y-0.5;
+    @apply hover:border-gray-300 dark:hover:border-gray-700;
+  }
+  
+  /* Button styles */
+  .btn {
+    @apply inline-flex items-center justify-center;
+    @apply px-4 py-2 rounded-lg font-medium;
+    @apply transition-all duration-200;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700;
+    @apply focus:ring-blue-500;
+  }
+  
+  .btn-ghost {
+    @apply hover:bg-gray-100 dark:hover:bg-gray-800;
+  }
+  
+  /* Tag styles */
+  .tag {
+    @apply inline-flex items-center px-3 py-1;
+    @apply text-sm font-medium rounded-full;
+    @apply bg-gray-100 dark:bg-gray-800;
+    @apply text-gray-700 dark:text-gray-300;
+    @apply hover:bg-gray-200 dark:hover:bg-gray-700;
+    @apply transition-colors duration-200;
+  }
+}
+
+/* Animations */
+@layer utilities {
+  .animate-in {
+    animation: animate-in 0.5s ease-out;
+  }
+  
+  @keyframes animate-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+  
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+/* Hide scrollbar for tag containers */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .container-wide {
+    @apply px-4;
+  }
+}
+
+/* Remove old styles that are now handled by Tailwind */
 .header-name {
-  /* display: none; */
-  opacity: 1;
-  /* opacity: 0; */
-  overflow: hidden;
-}
-
-.sticky-nav-full .nav {
-  @apply text-gray-600 dark:text-gray-300;
+  @apply transition-opacity duration-300;
 }
 
 nav {
-  flex-wrap: wrap;
-  line-height: 1.5em;
-}
-
-.article-tags::-webkit-scrollbar {
-  width: 0 !important;
-}
-
-.tag-container ul::-webkit-scrollbar {
-  width: 0 !important;
-}
-
-.tag-container ul {
-  -ms-overflow-style: none;
-  overflow: -moz-scrollbars-none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  -khtml-user-select: none;
-  user-select: none;
-}
-
-.mobile-x-scroll {
-  overflow-x: scroll;
-}
-
-@media (max-width: 768px) {
-  .sticky-nav-full {
-    @apply max-w-full border-b border-opacity-50 border-gray-200 dark:border-gray-600 dark:border-opacity-50;
-  }
-  .header-name {
-    display: block;
-    /* opacity: 0; */
-    transition: all 0.5s cubic-bezier(0.4, 0, 0, 1);
-  }
-  .sticky-nav-full .header-name {
-    opacity: 1;
-    @apply dark:text-gray-300 text-gray-600;
-  }
-}
-
-@supports not (backdrop-filter: none) {
-  .sticky-nav {
-    backdrop-filter: none;
-    @apply bg-day bg-opacity-90 dark:bg-night dark:bg-opacity-90;
-  }
-}
-
-@media (min-width: 768px) {
-  .mobile-x-scroll {
-    overflow-x: hidden;
-  }
+  @apply flex items-center gap-6;
 }

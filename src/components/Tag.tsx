@@ -3,21 +3,29 @@ import React from 'react'
 
 type Props = {
   children: string
+  onClick?: () => void
 }
 
-const Tag: React.FC<Props> = ({ children }) => {
+const Tag: React.FC<Props> = ({ children, onClick }) => {
   const router = useRouter()
 
-  const handleClick = (value: string) => {
-    router.push(`/?tag=${value}`)
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    if (onClick) {
+      onClick()
+    } else {
+      router.push(`/?tag=${children}`)
+    }
   }
+  
   return (
-    <div
-      onClick={() => handleClick(children)}
-      className="text-xs text-gray-500 font-normal rounded-full bg-gray-200 px-2 py-1 cursor-pointer"
+    <button
+      onClick={handleClick}
+      className="tag text-xs"
     >
       {children}
-    </div>
+    </button>
   )
 }
 

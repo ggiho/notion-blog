@@ -11,76 +11,72 @@ type Props = {
 }
 
 const PostCard: React.FC<Props> = ({ data }) => {
-  const category = (data.category && data.category?.[0]) || undefined
+  const category = data.category?.[0] || undefined
 
   return (
     <Link href={`/${data.slug}`}>
-      <a>
-        <article
-          key={data.id}
-          className="relative overflow-hidden mb-6 md:mb-8 rounded-2xl bg-white dark:bg-zinc-700 hover:shadow-lg transition-shadow "
-        >
-          {category && (
-            <Category className="absolute top-4 left-4 z-10">
-              {category}
-            </Category>
-          )}
+      <a className="group block">
+        <article className="card card-hover h-full flex flex-col">
+          {/* Thumbnail */}
           {data.thumbnail && (
-            <div className="relative w-full pb-[66%] lg:pb-[50%] bg-gray-200 dark:bg-zinc-700 ">
+            <div className="relative w-full aspect-[16/9] overflow-hidden rounded-t-xl">
               <Image
                 src={data.thumbnail}
-                className="object-cover"
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
                 layout="fill"
                 alt={data.title}
               />
+              {category && (
+                <div className="absolute top-4 left-4">
+                  <Category>{category}</Category>
+                </div>
+              )}
             </div>
           )}
-          <div
-            className={["p-4", !data.thumbnail && category ? "pt-14" : ""].join(
-              " "
-            )}
-          >
-            <header className="flex flex-col justify-between md:flex-row md:items-baseline">
-              <h2 className="text-lg md:text-xl font-medium mb-2 cursor-pointer text-black dark:text-gray-100">
-                {data.title}
-              </h2>
-            </header>
-            <div className="flex items-center gap-2 mb-4">
-              {/* {data.author && data.author[0] && (
-                <>
-                  <div className="flex items-center gap-1">
-                    <Image
-                      className="rounded-full"
-                      src={data.author[0].profile_photo}
-                      alt="profile_photo"
-                      loader={imageLoader}
-                      width={20}
-                      height={20}
-                    />
-                    <div className="text-sm text-gray-500 dark:text-gray-400">
-                      {`${data.author[0].last_name}${data.author[0].first_name}`}
-                    </div>
-                  </div>
-                  <div className="self-stretch w-px my-1 bg-gray-300"></div>
-                </>
-              )} */}
-              <div className="text-sm text-gray-500 dark:text-gray-400 md:ml-0">
-                {formatDate(
-                  data?.date?.start_date || data.createdTime,
-                  CONFIG.lang
-                )}
+          
+          {/* Content */}
+          <div className="flex-1 p-6 flex flex-col">
+            {/* Category for posts without thumbnail */}
+            {!data.thumbnail && category && (
+              <div className="mb-4">
+                <Category>{category}</Category>
               </div>
-            </div>
-            <div className="mb-4">
-              <p className="hidden md:block leading-8 text-gray-700 dark:text-gray-300">
+            )}
+            
+            {/* Title */}
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              {data.title}
+            </h2>
+            
+            {/* Summary */}
+            {data.summary && (
+              <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-3 mb-4 flex-1">
                 {data.summary}
               </p>
-            </div>
-            <div className="flex gap-2">
-              {data.tags &&
-                data.tags.map((tag: string, idx: number) => (
-                  <Tag key={idx}>{tag}</Tag>
-                ))}
+            )}
+            
+            {/* Footer */}
+            <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-800">
+              {/* Date */}
+              <time className="text-sm text-gray-500 dark:text-gray-500">
+                {formatDate(data?.date?.start_date || data.createdTime, CONFIG.lang)}
+              </time>
+              
+              {/* Tags */}
+              {data.tags && data.tags.length > 0 && (
+                <div className="flex gap-2 flex-wrap justify-end">
+                  {data.tags.slice(0, 2).map((tag, idx) => (
+                    <span key={idx} className="text-xs text-gray-500 dark:text-gray-500">
+                      #{tag}
+                    </span>
+                  ))}
+                  {data.tags.length > 2 && (
+                    <span className="text-xs text-gray-400 dark:text-gray-600">
+                      +{data.tags.length - 2}
+                    </span>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </article>

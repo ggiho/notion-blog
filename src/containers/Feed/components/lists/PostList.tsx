@@ -51,13 +51,23 @@ const PostList: React.FC<Props> = ({ q, posts }) => {
   }, [q, currentTag, currentCategory, currentOrder, posts])
 
   return (
-    <div className="my-2">
+    <div className="space-y-8">
       {!filteredPosts.length && (
-        <p className="text-gray-500 dark:text-gray-300">Nothing! 😺</p>
+        <div className="text-center py-20">
+          <div className="text-6xl mb-4">😺</div>
+          <p className="text-lg text-gray-500 dark:text-gray-400">
+            검색 결과가 없습니다
+          </p>
+          <p className="text-sm text-gray-400 dark:text-gray-500 mt-2">
+            다른 키워드로 검색해보세요
+          </p>
+        </div>
       )}
-      {filteredPosts.map((post) => (
-        <PostCard key={post.id} data={post} />
-      ))}
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 animate-in">
+        {filteredPosts.map((post) => (
+          <PostCard key={post.id} data={post} />
+        ))}
+      </div>
     </div>
   )
 }
