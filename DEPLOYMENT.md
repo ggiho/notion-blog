@@ -48,7 +48,7 @@ GOOGLE_SITE_VERIFICATION=your-verification-code
 ### 5. 도메인 설정
 
 #### 기본 도메인
-- `notion-blog.vercel.app` (자동 생성)
+- `giho.vercel.app` (커스텀 도메인)
 
 #### 커스텀 도메인
 1. Settings → Domains
@@ -81,7 +81,7 @@ git push
 ### 업데이트 반영 안됨
 ```bash
 # 수동 재검증
-curl https://your-site.vercel.app/api/revalidate?secret=YOUR_SECRET
+curl https://giho.vercel.app/api/revalidate?secret=YOUR_SECRET
 ```
 
 ## 자동화 팁

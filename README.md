@@ -7,7 +7,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.2-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
 [![Notion API](https://img.shields.io/badge/Notion-API-000000?logo=notion)](https://developers.notion.com/)
 
-[데모 사이트](https://notion-blog.vercel.app) | [Notion 템플릿](https://giho.notion.site/e447025afa8742f38782fc1c4cc344ac)
+[데모 사이트](https://giho.vercel.app) | [Notion 템플릿](https://giho.notion.site/e447025afa8742f38782fc1c4cc344ac)
 
 ## ✨ 특징
 

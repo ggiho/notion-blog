@@ -32,17 +32,17 @@
 ## 배포 후 설정
 
 ### 도메인 설정
-- 기본: `notion-blog.vercel.app`
+- 기본: `giho.vercel.app`
 - 커스텀 도메인: Settings → Domains에서 추가
 
 ### GitHub Secrets 설정 (자동 재검증용)
 1. GitHub 저장소 → Settings → Secrets
 2. 추가:
-   - `SITE_URL`: `https://notion-blog.vercel.app`
+   - `SITE_URL`: `https://giho.vercel.app`
    - `REVALIDATION_SECRET`: `810ff72f1d0552ebe2b0b08eca9478238eeedee82178c2de9b69db577f463ffe`
 
 ## 확인
-배포 완료 후 `https://notion-blog.vercel.app` 접속하여 확인
+배포 완료 후 `https://giho.vercel.app` 접속하여 확인
 
 ## 문제 해결
 - 빌드 실패: Vercel 대시보드에서 로그 확인
