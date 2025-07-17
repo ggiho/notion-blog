@@ -1,16 +1,16 @@
 import { useRouter } from "next/router"
 import React from "react"
 
-// Modern color palette for categories
+// 2025 Trend: Warm, earthy color palette
 const MODERN_COLORS = [
-  "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
-  "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
-  "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400",
-  "bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-400",
-  "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400",
-  "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400",
-  "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
-  "bg-gray-100 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400",
+  "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300",
+  "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300",
+  "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300",
+  "bg-lime-100 text-lime-800 dark:bg-lime-900/30 dark:text-lime-300",
+  "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300",
+  "bg-teal-100 text-teal-800 dark:bg-teal-900/30 dark:text-teal-300",
+  "bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-300",
+  "bg-stone-100 text-stone-800 dark:bg-stone-900/30 dark:text-stone-300",
 ]
 
 export const getColorClassByName = (name: string): string => {

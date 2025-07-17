@@ -1,0 +1,10 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="32" height="32" rx="8" fill="#18181B"/>
+  
+  <!-- Letter G - Modern minimalist style -->
+  <path d="M16 6C10.477 6 6 10.477 6 16C6 21.523 10.477 26 16 26C18.788 26 21.277 24.736 22.95 22.736L19.5 19.5C18.632 20.434 17.383 21 16 21C13.239 21 11 18.761 11 16C11 13.239 13.239 11 16 11C17.932 11 19.564 12.219 20.196 13.9H16V17H25V16C25 10.477 20.523 6 16 6Z" fill="white"/>
+  
+  <!-- Accent dot -->
+  <circle cx="24" cy="24" r="2" fill="#3B82F6"/>
+</svg>

@@ -12,7 +12,10 @@ class MyDocument extends Document {
             as="font"
             href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css"
           />
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+          <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+          <link rel="apple-touch-icon" href="/apple-touch-icon-new.svg" />
+          <link rel="manifest" href="/site.webmanifest" />
           <link
             rel="apple-touch-icon"
             sizes="192x192"
@@ -25,7 +28,8 @@ class MyDocument extends Document {
             href="/feed"
           ></link>
           {/* theme setting */}
-          <meta name="theme-color" content={"#f1f3f5"} />
+          <meta name="theme-color" content={"#18181B"} />
+          <meta name="msapplication-TileColor" content="#18181B" />
 
           {/* google search console */}
           {CONFIG.googleSearchConsole.enable === true && (

@@ -10,56 +10,80 @@ type Props = {
 }
 
 const PostHeader: React.FC<Props> = ({ data }) => {
+  const readingTime = data.summary ? Math.ceil(data.summary.split(' ').length / 200) : 5
+  
   return (
     <>
-      <h1 className="font-bold text-3xl text-black dark:text-white">
+      <h1 className="mb-4 text-4xl font-black tracking-tight text-gray-900 dark:text-gray-100 md:text-5xl">
         {data.title}
       </h1>
+      
+      {data.summary && (
+        <p className="mb-6 text-xl text-gray-600 dark:text-gray-400">
+          {data.summary}
+        </p>
+      )}
+      
       {data.type[0] !== "Paper" && (
-        <nav className="mt-6 text-gray-500 dark:text-gray-400">
-          <div className="flex items-center gap-3 mb-3">
-            {data.author && data.author[0] && data.author[0].name && (
-              <>
-                <div className="flex items-center gap-2">
-                  <Image
-                    className="rounded-full"
-                    src={data.author[0].profile_photo || CONFIG.profile.image}
-                    alt="profile_photo"
-                    width={24}
-                    height={24}
-                  />
-                  <div className="">{data.author[0].name}</div>
-                </div>
-                <div className="self-stretch w-px my-1 bg-gray-300"></div>
-              </>
-            )}
-            <div className=" mr-2 md:ml-0">
-              {formatDate(
-                data?.date?.start_date || data.createdTime,
-                CONFIG.lang
-              )}
-            </div>
-          </div>
-          <div className="flex items-center mb-4">
-            {data.tags && (
-              <div className="flex flex-nowrap max-w-full overflow-x-auto article-tags gap-2">
-                {data.tags.map((tag: string) => (
-                  <Tag key={tag}>{tag}</Tag>
-                ))}
-              </div>
-            )}
-          </div>
-          {data.thumbnail && (
-            <div className="relative w-full pb-[66%] lg:pb-[50%] bg-gray-200 dark:bg-zinc-700 mb-7 rounded-3xl overflow-hidden">
+        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+          {/* Author */}
+          {data.author && data.author[0] && data.author[0].name && (
+            <div className="flex items-center gap-2">
               <Image
-                src={data.thumbnail}
-                className="object-cover"
-                layout="fill"
-                alt={data.title}
+                className="rounded-full"
+                src={data.author[0].profile_photo || CONFIG.profile.image}
+                alt="profile_photo"
+                width={32}
+                height={32}
               />
+              <span className="font-medium text-gray-900 dark:text-gray-100">
+                {data.author[0].name}
+              </span>
             </div>
           )}
-        </nav>
+          
+          {/* Date */}
+          <time className="flex items-center gap-1">
+            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            {formatDate(data?.date?.start_date || data.createdTime, CONFIG.lang)}
+          </time>
+          
+          {/* Reading Time */}
+          <span className="flex items-center gap-1">
+            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            {readingTime} min read
+          </span>
+        </div>
+      )}
+      
+      {/* Tags */}
+      {data.tags && data.tags.length > 0 && (
+        <div className="mt-4 flex flex-wrap gap-2">
+          {data.tags.map((tag: string) => (
+            <span key={tag} className="badge">
+              #{tag}
+            </span>
+          ))}
+        </div>
+      )}
+      
+      {/* Thumbnail */}
+      {data.thumbnail && (
+        <div className="mt-8 mb-8 overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-800">
+          <div className="relative aspect-[16/9]">
+            <Image
+              src={data.thumbnail}
+              className="object-cover"
+              layout="fill"
+              alt={data.title}
+              priority
+            />
+          </div>
+        </div>
       )}
     </>
   )

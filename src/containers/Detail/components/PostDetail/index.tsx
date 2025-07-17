@@ -26,50 +26,58 @@ const PostDetail: React.FC<Props> = ({ blockMap, data }) => {
   const category = (data.category && data.category?.[0]) || undefined
 
   return (
-    <div className="flex gap-12 max-w-7xl mx-auto px-4">
-      {/* Main Content */}
-      <div className="flex-1 min-w-0">
-        <div className="bg-white dark:bg-gray-900 rounded-3xl py-12 px-8 shadow-lg border border-gray-100 dark:border-gray-800">
-          <article className="max-w-4xl mx-auto">
-            {category && (
-              <Category
-                className="mb-2"
-                readOnly={data.status?.[0] === "PublicOnDetail"}
-              >
-                {category}
-              </Category>
-            )}
-            {data.type[0] === "Post" && <PostHeader data={data} />}
-            {blockMap && (
-              <div className="-mt-4 prose prose-lg dark:prose-invert max-w-none">
-                <NotionRenderer
-                  recordMap={blockMap}
-                  components={{
-                    equation: Equation,
-                    code: Code,
-                    collection: Collection,
-                    collectionRow: CollectionRow,
-                  }}
-                  mapPageUrl={mapPageUrl}
-                />
-              </div>
-            )}
-            {data.type[0] === "Post" && (
-              <>
-                <Footer />
-                <CommentBox data={data} />
-              </>
-            )}
+    <div className="py-8 md:py-12">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="lg:flex lg:gap-12">
+          {/* Main Content */}
+          <article className="flex-1 min-w-0">
+            <div className="mx-auto max-w-prose">
+              {/* Header */}
+              <header className="mb-8">
+                {category && (
+                  <div className="mb-4">
+                    <span className="badge badge-primary">
+                      {category}
+                    </span>
+                  </div>
+                )}
+                {data.type[0] === "Post" && <PostHeader data={data} />}
+              </header>
+              
+              {/* Content */}
+              {blockMap && (
+                <div className="prose prose-lg prose-gray dark:prose-invert max-w-none">
+                  <NotionRenderer
+                    recordMap={blockMap}
+                    components={{
+                      equation: Equation,
+                      code: Code,
+                      collection: Collection,
+                      collectionRow: CollectionRow,
+                    }}
+                    mapPageUrl={mapPageUrl}
+                  />
+                </div>
+              )}
+              
+              {/* Footer */}
+              {data.type[0] === "Post" && (
+                <div className="mt-12 space-y-8">
+                  <Footer />
+                  <CommentBox data={data} />
+                </div>
+              )}
+            </div>
           </article>
+
+          {/* Table of Contents - Desktop Only */}
+          <aside className="hidden lg:block lg:w-64 lg:flex-shrink-0">
+            <div className="sticky top-24">
+              <TableOfContents blockMap={blockMap} />
+            </div>
+          </aside>
         </div>
       </div>
-
-      {/* Table of Contents - Desktop Only */}
-      <aside className="hidden xl:block w-64 flex-shrink-0">
-        <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-800">
-          <TableOfContents blockMap={blockMap} />
-        </div>
-      </aside>
     </div>
   )
 }

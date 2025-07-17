@@ -1,8 +1,8 @@
 const CONFIG = {
   // profile setting (required)
   profile: {
-    name: "giho",
-    image: "/profile.png", // If you want to create your own notion avatar, check out https://notion-avatar.vercel.app
+    name: "Giho Seong",
+    image: "/profile-new.svg", // If you want to create your own notion avatar, check out https://notion-avatar.vercel.app
     role: "Database Administrator",
     bio: "Aurora for MySQL 운영 중",
     email: "wasd92@naver.com",
@@ -20,7 +20,7 @@ const CONFIG = {
   blog: {
     title: "Giho's Tech Blog",
     description: "Database, DevOps, and Development Notes",
-    theme: "light", // ['light', 'dark', 'auto']
+    theme: "auto", // ['light', 'dark', 'auto']
   },
 
   // CONFIG configration (required)

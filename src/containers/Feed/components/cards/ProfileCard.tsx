@@ -9,18 +9,40 @@ type Props = {
 const ProfileCard: React.FC<Props> = ({ className }) => {
   return (
     <div className={className}>
-      <div className="p-1 mb-3 dark:text-white">💻 Profile</div>
-      <div className="w-full md:p-4 lg:p-4 rounded-2xl bg-white dark:bg-zinc-700 mb-9">
-        <div className="relative w-full after:content-[''] after:block after:pb-[100%]">
-          <Image src={CONFIG.profile.image} layout="fill" alt="" />
-        </div>
-        <div className="bg-white p-2 flex flex-col items-center dark:bg-zinc-700 dark:text-white">
-          <div className=" text-xl italic font-bold">{CONFIG.profile.name}</div>
-          <div className="text-sm mb-4 text-gray-500 dark:text-gray-400">
-            {CONFIG.profile.role}
+      <div className="mb-6">
+        <h3 className="text-sm font-black uppercase tracking-wider text-neutral-500 dark:text-neutral-400">About Me</h3>
+      </div>
+      <div className="group relative w-full rounded-3xl bg-white dark:bg-neutral-900 overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-amber-100/50 dark:hover:shadow-amber-900/20">
+        {/* Background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-50/50 via-transparent to-orange-50/50 dark:from-amber-900/10 dark:to-orange-900/10" />
+        
+        <div className="relative p-6">
+          {/* Profile Image */}
+          <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-amber-100 dark:ring-amber-900/30 group-hover:ring-amber-200 dark:group-hover:ring-amber-800/50 transition-all duration-300">
+            <Image 
+              src={CONFIG.profile.image} 
+              layout="fill" 
+              alt={CONFIG.profile.name}
+              className="object-cover"
+            />
           </div>
-          <div className="text-sm mb-2">{CONFIG.profile.bio}</div>
+          
+          {/* Profile Info */}
+          <div className="text-center space-y-3">
+            <h2 className="text-2xl font-black text-neutral-900 dark:text-neutral-100">
+              {CONFIG.profile.name}
+            </h2>
+            <p className="text-sm font-medium text-amber-600 dark:text-amber-400 uppercase tracking-wider">
+              {CONFIG.profile.role}
+            </p>
+            <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-xs mx-auto">
+              {CONFIG.profile.bio}
+            </p>
+          </div>
         </div>
+        
+        {/* Bottom accent */}
+        <div className="h-1 bg-gradient-to-r from-amber-400 via-orange-400 to-amber-400" />
       </div>
     </div>
   )

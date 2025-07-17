@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 
   return {
     paths: filteredPost.map((row) => `/${row.slug}`),
-    fallback: true,
+    fallback: 'blocking',
   }
 }
 
@@ -35,7 +35,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
 
     return {
       props: { post, blockMap },
-      revalidate: 60, // 60초마다 자동 재검증
+      revalidate: 3600, // 1시간마다 자동 재검증
     }
   } catch (error) {
     return {

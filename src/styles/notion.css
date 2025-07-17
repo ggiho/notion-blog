@@ -48,12 +48,43 @@ svg + .notion-page-title-text {
   @apply text-gray-600 dark:text-gray-300;
 }
 
+.notion-code {
+  @apply bg-gray-50 dark:bg-gray-900/50;
+  @apply border border-gray-200 dark:border-gray-700;
+  @apply rounded-lg;
+  @apply my-4;
+}
+
 .notion-code > code {
-  @apply text-gray-900;
+  @apply text-gray-800 dark:text-gray-200;
+  @apply bg-transparent;
+  @apply text-sm;
 }
 
 pre[class*="language-"] {
-  line-height: inherit;
+  line-height: 1.5;
+  @apply bg-gray-900 dark:bg-black;
+  @apply rounded-lg;
+  @apply p-4;
+  @apply my-4;
+  @apply overflow-x-auto;
+  @apply border border-gray-700 dark:border-gray-800;
+}
+
+pre[class*="language-"] code {
+  @apply font-mono;
+  @apply text-sm;
+}
+
+/* Inline code */
+.notion-inline-code {
+  @apply bg-gray-100 dark:bg-gray-800;
+  @apply text-gray-800 dark:text-gray-200;
+  @apply px-1.5 py-0.5;
+  @apply rounded;
+  @apply text-sm;
+  @apply font-mono;
+  @apply border border-gray-200 dark:border-gray-700;
 }
 
 .notion-bookmark:hover {

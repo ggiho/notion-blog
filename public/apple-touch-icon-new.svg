@@ -1,0 +1,17 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with gradient -->
+  <rect width="180" height="180" rx="40" fill="url(#gradient)"/>
+  
+  <!-- Letter G - Bold modern style -->
+  <path d="M90 35C58.52 35 33 60.52 33 92C33 123.48 58.52 149 90 149C107.64 149 123.185 140.84 132.675 127.84L112 107.5C106.26 113.67 98.415 117.5 90 117.5C73.431 117.5 60 104.069 60 87.5C60 70.931 73.431 57.5 90 57.5C102.21 57.5 112.46 65.595 115.98 76.5H90V98H145V92C145 60.52 119.48 35 90 35Z" fill="white"/>
+  
+  <!-- Modern accent -->
+  <circle cx="135" cy="135" r="15" fill="white" opacity="0.9"/>
+  
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1F2937;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#111827;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

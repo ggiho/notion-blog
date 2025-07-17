@@ -15,54 +15,61 @@ const TableOfContents: React.FC<Props> = ({ blockMap }) => {
   const [activeId, setActiveId] = useState<string>('')
 
   useEffect(() => {
-    // Extract headings from blockMap
+    // Extract headings from DOM after render
     const extractHeadings = () => {
       const headings: TocItem[] = []
       
-      if (!blockMap?.block) return headings
-
-      Object.keys(blockMap.block).forEach((blockId) => {
-        const block = blockMap.block[blockId]?.value
-        if (!block) return
-
-        // Check if it's a heading block
-        if (block.type === 'header' || block.type === 'sub_header' || block.type === 'sub_sub_header') {
-          const text = block.properties?.title?.[0]?.[0] || ''
-          if (text) {
-            headings.push({
-              id: blockId,
-              text,
-              level: block.type === 'header' ? 1 : block.type === 'sub_header' ? 2 : 3
-            })
+      // Wait for notion content to render
+      setTimeout(() => {
+        // Find all heading elements in the rendered content
+        const headingElements = document.querySelectorAll('.notion-h, .notion-h1, .notion-h2, .notion-h3')
+        
+        headingElements.forEach((element) => {
+          const text = element.textContent || ''
+          const id = element.id || `heading-${headings.length}`
+          
+          // Set ID if not exists
+          if (!element.id) {
+            element.id = id
           }
-        }
-      })
-
-      return headings
+          
+          // Determine level based on class
+          let level = 1
+          if (element.classList.contains('notion-h2')) level = 2
+          else if (element.classList.contains('notion-h3')) level = 3
+          
+          if (text.trim()) {
+            headings.push({ id, text: text.trim(), level })
+          }
+        })
+        
+        setToc(headings)
+      }, 500)
     }
 
-    setToc(extractHeadings())
+    extractHeadings()
   }, [blockMap])
 
   useEffect(() => {
+    if (toc.length === 0) return
+
     // Set up intersection observer for active section tracking
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id)
-          }
-        })
-      },
-      {
-        rootMargin: '-20% 0% -70% 0%',
-        threshold: 0
-      }
-    )
+    const observerOptions = {
+      rootMargin: '-80px 0px -80% 0px',
+      threshold: 0
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveId(entry.target.id)
+        }
+      })
+    }, observerOptions)
 
     // Observe all heading elements
     toc.forEach((item) => {
-      const element = document.getElementById(`notion-block-${item.id}`)
+      const element = document.getElementById(item.id)
       if (element) {
         observer.observe(element)
       }
@@ -72,9 +79,9 @@ const TableOfContents: React.FC<Props> = ({ blockMap }) => {
   }, [toc])
 
   const handleClick = (id: string) => {
-    const element = document.getElementById(`notion-block-${id}`)
+    const element = document.getElementById(id)
     if (element) {
-      const y = element.getBoundingClientRect().top + window.pageYOffset - 100
+      const y = element.getBoundingClientRect().top + window.pageYOffset - 80
       window.scrollTo({ top: y, behavior: 'smooth' })
     }
   }
@@ -82,32 +89,54 @@ const TableOfContents: React.FC<Props> = ({ blockMap }) => {
   if (toc.length === 0) return null
 
   return (
-    <nav className="sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto">
-      <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-4 uppercase tracking-wider">
-        목차
-      </h3>
-      <ul className="space-y-2 text-sm">
-        {toc.map((item) => (
-          <li
-            key={item.id}
-            style={{ paddingLeft: `${(item.level - 1) * 16}px` }}
-          >
-            <button
-              onClick={() => handleClick(item.id)}
-              className={`
-                block w-full text-left py-1.5 px-3 rounded-lg transition-all duration-200
-                ${activeId === item.id
-                  ? 'bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 font-medium'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800/50'
-                }
-              `}
-            >
-              <span className="line-clamp-2">{item.text}</span>
-            </button>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <div className="sticky top-24">
+      <nav className="relative">
+        
+        {/* Background track */}
+        <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-neutral-200 dark:bg-neutral-800" />
+        
+        <ul className="relative space-y-1">
+          {toc.map((item, index) => {
+            const isActive = activeId === item.id
+            const indent = (item.level - 1) * 20
+            
+            return (
+              <li
+                key={item.id}
+                style={{ paddingLeft: `${indent}px` }}
+                className="relative"
+              >
+                {/* Active indicator */}
+                {isActive && (
+                  <div className="absolute -left-0.5 top-1/2 -translate-y-1/2 w-1 h-8 bg-gradient-to-b from-amber-500 to-orange-500 rounded-full transition-all duration-300" />
+                )}
+                
+                <button
+                  onClick={() => handleClick(item.id)}
+                  className={`
+                    block w-full text-left py-2 px-3 text-sm rounded-lg transition-all duration-200
+                    ${isActive
+                      ? 'text-amber-700 dark:text-amber-400 font-semibold bg-amber-50 dark:bg-amber-900/20'
+                      : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-800/50'
+                    }
+                  `}
+                >
+                  <span className="line-clamp-2 leading-tight">
+                    {item.level > 1 && <span className="text-neutral-400 dark:text-neutral-600 mr-1">•</span>}
+                    {item.text}
+                  </span>
+                  {isActive && (
+                    <div className="text-xs text-amber-600 dark:text-amber-500 mt-0.5">
+                      현재 위치
+                    </div>
+                  )}
+                </button>
+              </li>
+            )
+          })}
+        </ul>
+      </nav>
+    </div>
   )
 }
 
