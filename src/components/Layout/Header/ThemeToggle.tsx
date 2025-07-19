@@ -16,9 +16,15 @@ const ThemeToggle: React.FC = () => {
     const changedTheme = theme !== "dark" ? "dark" : "light"
     localStorage.setItem("theme", changedTheme)
     setTheme(changedTheme)
-    changedTheme === "dark"
-      ? document.documentElement.classList.add("dark")
-      : document.documentElement.classList.remove("dark")
+    if (changedTheme === "dark") {
+      document.documentElement.classList.add("dark")
+      document.documentElement.classList.add("notion-dark")
+      document.documentElement.classList.remove("notion-light")
+    } else {
+      document.documentElement.classList.remove("dark")
+      document.documentElement.classList.add("notion-light")
+      document.documentElement.classList.remove("notion-dark")
+    }
   }
 
   if (CONFIG.blog.theme !== "auto" || !mounted) return null

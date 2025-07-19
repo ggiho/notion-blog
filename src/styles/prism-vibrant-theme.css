@@ -1,0 +1,313 @@
+/* Vibrant GitHub-like theme for both light and dark modes */
+
+/* Base styles for all code */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #abb2bf;
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  font-size: 14px;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  overflow: auto;
+  background: #282c34 !important;
+  border: 1px solid #3e4451;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+/* Dark mode code blocks */
+.notion-dark pre[class*="language-"] {
+  background: #1e1e1e !important;
+  border-color: #2d2d30;
+  color: #e1e4e8;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  background: #f3f4f6;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  white-space: normal;
+}
+
+.notion-dark :not(pre) > code[class*="language-"] {
+  background: #161b22;
+  color: #e1e4e8;
+}
+
+/* Comments */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6a737d;
+}
+
+.notion-dark .token.comment,
+.notion-dark .token.prolog,
+.notion-dark .token.doctype,
+.notion-dark .token.cdata {
+  color: #8b949e;
+}
+
+/* Pink - Keywords */
+.token.keyword,
+.token.control,
+.token.directive,
+.token.unit,
+.token.statement,
+.token.regex,
+.token.atrule {
+  color: #ff79c6 !important; /* Bright Pink */
+  font-weight: bold;
+}
+
+.notion-dark .token.keyword,
+.notion-dark .token.control,
+.notion-dark .token.directive,
+.notion-dark .token.unit,
+.notion-dark .token.statement,
+.notion-dark .token.regex,
+.notion-dark .token.atrule {
+  color: #ff7b72; /* Brighter Pink for dark mode */
+}
+
+/* Green - Strings */
+.token.string,
+.token.char,
+.token.attr-value,
+.token.regex,
+.token.variable,
+.token.inserted {
+  color: #50fa7b !important; /* Bright Green */
+}
+
+.notion-dark .token.string,
+.notion-dark .token.char,
+.notion-dark .token.attr-value,
+.notion-dark .token.inserted {
+  color: #7ee787; /* Bright Green for dark mode */
+}
+
+/* Purple - Functions and Classes */
+.token.function,
+.token.class-name,
+.token.class,
+.token.decorator,
+.token.title.class_ {
+  color: #bd93f9 !important; /* Bright Purple */
+  font-weight: bold;
+}
+
+.notion-dark .token.function,
+.notion-dark .token.class-name,
+.notion-dark .token.class,
+.notion-dark .token.decorator,
+.notion-dark .token.title.class_ {
+  color: #d2a8ff; /* Bright Purple for dark mode */
+}
+
+/* Orange - Properties, Numbers */
+.token.property,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.boolean,
+.token.attr-name,
+.token.builtin {
+  color: #ffb86c !important; /* Bright Orange */
+}
+
+.notion-dark .token.property,
+.notion-dark .token.number,
+.notion-dark .token.constant,
+.notion-dark .token.symbol,
+.notion-dark .token.boolean,
+.notion-dark .token.attr-name,
+.notion-dark .token.builtin {
+  color: #ffa657; /* Bright Orange for dark mode */
+}
+
+/* Blue - Tags, Selectors */
+.token.tag,
+.token.selector,
+.token.punctuation.definition.tag {
+  color: #005cc5; /* Blue */
+}
+
+.notion-dark .token.tag,
+.notion-dark .token.selector {
+  color: #79c0ff; /* Bright Blue for dark mode */
+}
+
+/* Red - Operators */
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #d73a49; /* Red */
+}
+
+.notion-dark .token.operator,
+.notion-dark .token.entity,
+.notion-dark .token.url {
+  color: #ff7b72; /* Bright Red for dark mode */
+}
+
+/* Red - Deleted */
+.token.deleted {
+  color: #b31d28;
+  background-color: #ffeef0;
+}
+
+.notion-dark .token.deleted {
+  color: #ffa198;
+  background-color: #490202;
+}
+
+/* Punctuation */
+.token.punctuation {
+  color: #f8f8f2;
+}
+
+.notion-dark .token.punctuation {
+  color: #e1e4e8;
+}
+
+/* Namespace */
+.token.namespace {
+  opacity: 0.7;
+}
+
+/* Bold and Italic */
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+/* Selection */
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection {
+  background: #c8d3f5;
+  color: inherit;
+}
+
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+  background: #c8d3f5;
+  color: inherit;
+}
+
+.notion-dark pre[class*="language-"]::-moz-selection,
+.notion-dark pre[class*="language-"] ::-moz-selection,
+.notion-dark code[class*="language-"]::-moz-selection,
+.notion-dark code[class*="language-"] ::-moz-selection {
+  background: #3392ff44;
+}
+
+.notion-dark pre[class*="language-"]::selection,
+.notion-dark pre[class*="language-"] ::selection,
+.notion-dark code[class*="language-"]::selection,
+.notion-dark code[class*="language-"] ::selection {
+  background: #3392ff44;
+}
+
+/* Line highlight */
+.line-highlight {
+  background: rgba(255, 255, 0, 0.1);
+  border-left: 3px solid #ffeb3b;
+}
+
+/* Make sure code blocks in Notion have proper styling */
+.notion-code {
+  background: none !important;
+}
+
+.notion-code > code {
+  background: none !important;
+  padding: 0 !important;
+}
+
+/* Override any conflicting styles */
+.language-javascript .token.keyword,
+.language-js .token.keyword,
+.language-typescript .token.keyword,
+.language-ts .token.keyword,
+.language-jsx .token.keyword,
+.language-tsx .token.keyword {
+  color: #d73a49 !important;
+  font-weight: bold !important;
+}
+
+.notion-dark .language-javascript .token.keyword,
+.notion-dark .language-js .token.keyword,
+.notion-dark .language-typescript .token.keyword,
+.notion-dark .language-ts .token.keyword,
+.notion-dark .language-jsx .token.keyword,
+.notion-dark .language-tsx .token.keyword {
+  color: #ff7b72 !important;
+}
+
+/* Specific language improvements */
+.language-css .token.property,
+.language-scss .token.property {
+  color: #005cc5;
+}
+
+.notion-dark .language-css .token.property,
+.notion-dark .language-scss .token.property {
+  color: #79c0ff;
+}
+
+.language-html .token.tag {
+  color: #22863a;
+}
+
+.notion-dark .language-html .token.tag {
+  color: #7ee787;
+}
+
+.language-html .token.attr-name {
+  color: #6f42c1;
+}
+
+.notion-dark .language-html .token.attr-name {
+  color: #d2a8ff;
+}
+
+.language-html .token.attr-value {
+  color: #032f62;
+}
+
+.notion-dark .language-html .token.attr-value {
+  color: #a5d6ff;
+}

@@ -1,0 +1,224 @@
+/* GitHub Dark theme for Prism.js with vibrant colors */
+.notion-dark code[class*="language-"],
+.notion-dark pre[class*="language-"] {
+  color: #e1e4e8;
+  background: #0d1117;
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  font-size: 14px;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+.notion-dark pre[class*="language-"] {
+  overflow: auto;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 16px;
+}
+
+/* Inline code */
+.notion-dark :not(pre) > code[class*="language-"] {
+  background: #161b22;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  white-space: normal;
+}
+
+/* Comments */
+.notion-dark .token.comment,
+.notion-dark .token.prolog,
+.notion-dark .token.doctype,
+.notion-dark .token.cdata {
+  color: #8b949e;
+}
+
+/* Punctuation */
+.notion-dark .token.punctuation {
+  color: #e1e4e8;
+}
+
+/* Pink - Keywords */
+.notion-dark .token.keyword,
+.notion-dark .token.control,
+.notion-dark .token.directive,
+.notion-dark .token.unit {
+  color: #ff7b72; /* Pink */
+}
+
+/* Green - Strings */
+.notion-dark .token.string,
+.notion-dark .token.char,
+.notion-dark .token.attr-value,
+.notion-dark .token.regex,
+.notion-dark .token.variable {
+  color: #a5d6ff; /* Light Blue (was green, but using GitHub's actual color) */
+}
+
+/* Purple - Functions and Classes */
+.notion-dark .token.function,
+.notion-dark .token.class-name,
+.notion-dark .token.class,
+.notion-dark .token.decorator {
+  color: #d2a8ff; /* Purple */
+}
+
+/* Orange - Properties, Numbers */
+.notion-dark .token.property,
+.notion-dark .token.number,
+.notion-dark .token.constant,
+.notion-dark .token.symbol,
+.notion-dark .token.boolean {
+  color: #ff9859; /* Orange */
+}
+
+/* Blue - Tags, Selectors */
+.notion-dark .token.tag,
+.notion-dark .token.selector,
+.notion-dark .token.attr-name,
+.notion-dark .token.builtin {
+  color: #79c0ff; /* Blue */
+}
+
+/* Red - Operators */
+.notion-dark .token.operator,
+.notion-dark .token.entity,
+.notion-dark .token.url,
+.notion-dark .language-css .token.string,
+.notion-dark .style .token.string {
+  color: #ff7b72; /* Pink-Red */
+}
+
+/* Green - Inserted */
+.notion-dark .token.inserted {
+  color: #7ee787; /* Green */
+}
+
+/* Red - Deleted */
+.notion-dark .token.deleted {
+  color: #ffa198; /* Light Red */
+}
+
+/* Additional colors */
+.notion-dark .token.atrule {
+  color: #d2a8ff; /* Purple */
+}
+
+.notion-dark .token.important,
+.notion-dark .token.namespace,
+.notion-dark .token.module {
+  color: #ffa657; /* Orange */
+}
+
+/* Template strings */
+.notion-dark .token.template-string,
+.notion-dark .token.template-punctuation {
+  color: #a5d6ff; /* Light Blue */
+}
+
+.notion-dark .token.interpolation {
+  color: #ff9859; /* Orange */
+}
+
+/* Bold and Italic */
+.notion-dark .token.important,
+.notion-dark .token.bold {
+  font-weight: bold;
+}
+
+.notion-dark .token.italic {
+  font-style: italic;
+}
+
+.notion-dark .token.entity {
+  cursor: help;
+}
+
+/* Selection */
+.notion-dark pre[class*="language-"]::-moz-selection,
+.notion-dark pre[class*="language-"] ::-moz-selection,
+.notion-dark code[class*="language-"]::-moz-selection,
+.notion-dark code[class*="language-"] ::-moz-selection {
+  background: #3392ff44;
+  color: inherit;
+}
+
+.notion-dark pre[class*="language-"]::selection,
+.notion-dark pre[class*="language-"] ::selection,
+.notion-dark code[class*="language-"]::selection,
+.notion-dark code[class*="language-"] ::selection {
+  background: #3392ff44;
+  color: inherit;
+}
+
+/* Line numbers */
+.notion-dark pre[class*="language-"].line-numbers {
+  position: relative;
+  padding-left: 3.8em;
+  counter-reset: linenumber;
+}
+
+.notion-dark pre[class*="language-"].line-numbers > code {
+  position: relative;
+  white-space: inherit;
+}
+
+.notion-dark .line-numbers .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  font-size: 100%;
+  left: -3.8em;
+  width: 3em;
+  letter-spacing: -1px;
+  border-right: 1px solid #30363d;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.notion-dark .line-numbers-rows > span {
+  display: block;
+  counter-increment: linenumber;
+}
+
+.notion-dark .line-numbers-rows > span:before {
+  content: counter(linenumber);
+  color: #6e7681;
+  display: block;
+  padding-right: 0.8em;
+  text-align: right;
+}
+
+/* Scrollbar styling */
+.notion-dark pre[class*="language-"]::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.notion-dark pre[class*="language-"]::-webkit-scrollbar-track {
+  background: #0d1117;
+  border-radius: 6px;
+}
+
+.notion-dark pre[class*="language-"]::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 6px;
+}
+
+.notion-dark pre[class*="language-"]::-webkit-scrollbar-thumb:hover {
+  background: #484f58;
+}

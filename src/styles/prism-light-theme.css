@@ -1,0 +1,172 @@
+/* Light theme for Prism.js - GitHub theme with vibrant colors */
+.notion-light code[class*="language-"],
+.notion-light pre[class*="language-"],
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #24292e;
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  font-size: 14px;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+.notion-light pre[class*="language-"] {
+  overflow: auto;
+}
+
+/* Inline code */
+.notion-light :not(pre) > code[class*="language-"] {
+  white-space: normal;
+}
+
+.notion-light .token.comment,
+.notion-light .token.prolog,
+.notion-light .token.doctype,
+.notion-light .token.cdata {
+  color: #6a737d;
+}
+
+.notion-light .token.punctuation {
+  color: #24292e;
+}
+
+.notion-light .token.namespace {
+  opacity: .7;
+}
+
+.notion-light .token.property,
+.notion-light .token.tag,
+.notion-light .token.boolean,
+.notion-light .token.number,
+.notion-light .token.constant,
+.notion-light .token.symbol,
+.notion-light .token.deleted {
+  color: #0969da; /* Blue */
+}
+
+.notion-light .token.selector,
+.notion-light .token.attr-name,
+.notion-light .token.char,
+.notion-light .token.builtin,
+.notion-light .token.inserted {
+  color: #1a7f37; /* Green */
+}
+
+.notion-light .token.string {
+  color: #0a3069; /* Dark blue for strings */
+}
+
+.notion-light .token.operator,
+.notion-light .token.entity,
+.notion-light .token.url,
+.notion-light .language-css .token.string,
+.notion-light .style .token.string {
+  color: #cf222e; /* Red */
+}
+
+.notion-light .token.atrule,
+.notion-light .token.attr-value,
+.notion-light .token.keyword {
+  color: #d1242f; /* Pink-Red */
+}
+
+.notion-light .token.function,
+.notion-light .token.class-name {
+  color: #8250df; /* Purple */
+}
+
+.notion-light .token.regex,
+.notion-light .token.important,
+.notion-light .token.variable {
+  color: #fb8500; /* Orange */
+}
+
+/* Additional GitHub-like colors */
+.notion-light .token.decorator,
+.notion-light .token.annotation {
+  color: #8250df; /* Purple */
+}
+
+.notion-light .token.module,
+.notion-light .token.namespace {
+  color: #e16125; /* Dark Orange */
+}
+
+/* Pink for special cases */
+.notion-light .token.interpolation,
+.notion-light .token.template-string,
+.notion-light .token.template-punctuation {
+  color: #d1242f; /* Pink-Red */
+}
+
+/* Green variations */
+.notion-light .token.hexcode,
+.notion-light .token.color,
+.notion-light .token.unit {
+  color: #1a7f37; /* Green */
+}
+
+.notion-light .token.important,
+.notion-light .token.bold {
+  font-weight: bold;
+}
+
+.notion-light .token.italic {
+  font-style: italic;
+}
+
+.notion-light .token.entity {
+  cursor: help;
+}
+
+/* Line numbers */
+.notion-light pre[class*="language-"].line-numbers {
+  position: relative;
+  padding-left: 3.8em;
+  counter-reset: linenumber;
+}
+
+.notion-light pre[class*="language-"].line-numbers > code {
+  position: relative;
+  white-space: inherit;
+}
+
+.notion-light .line-numbers .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  font-size: 100%;
+  left: -3.8em;
+  width: 3em;
+  letter-spacing: -1px;
+  border-right: 1px solid #e1e4e8;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.notion-light .line-numbers-rows > span {
+  display: block;
+  counter-increment: linenumber;
+}
+
+.notion-light .line-numbers-rows > span:before {
+  content: counter(linenumber);
+  color: #959da5;
+  display: block;
+  padding-right: 0.8em;
+  text-align: right;
+}

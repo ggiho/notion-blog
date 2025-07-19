@@ -1,8 +1,24 @@
 module.exports = {
   reactStrictMode: false,
-  swcMinify: true,
   images: {
-    domains: ['www.notion.so', 'lh5.googleusercontent.com', 's3-us-west-2.amazonaws.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'www.notion.so',
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh5.googleusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 's3-us-west-2.amazonaws.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'public.notion-static.com',
+      },
+    ],
     formats: ['image/avif', 'image/webp'],
   },
   webpack: (config, { isServer }) => {

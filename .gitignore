@@ -42,3 +42,6 @@ next-env.d.ts
 screenshot.png
 test-browser.js
 start-and-test.js
+
+# temporary directories
+minimal-notion-blog/

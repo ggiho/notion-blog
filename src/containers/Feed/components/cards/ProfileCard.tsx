@@ -21,7 +21,7 @@ const ProfileCard: React.FC<Props> = ({ className }) => {
           <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-amber-100 dark:ring-amber-900/30 group-hover:ring-amber-200 dark:group-hover:ring-amber-800/50 transition-all duration-300">
             <Image 
               src={CONFIG.profile.image} 
-              layout="fill" 
+              fill 
               alt={CONFIG.profile.name}
               className="object-cover"
             />

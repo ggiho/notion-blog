@@ -12,5 +12,10 @@ jobs:
     steps:
       - name: Trigger revalidation
         run: |
-          curl -X GET "${{ secrets.SITE_URL }}/api/revalidate?secret=${{ secrets.REVALIDATION_SECRET }}"
-          echo "Blog revalidated at $(date)"
+          response=$(curl -s -o /dev/null -w "%{http_code}" -X GET "${{ secrets.SITE_URL }}/api/revalidate?secret=${{ secrets.REVALIDATION_SECRET }}")
+          if [ $response -eq 200 ]; then
+            echo "✅ Blog revalidated successfully at $(date)"
+          else
+            echo "❌ Revalidation failed with HTTP status: $response"
+            exit 1
+          fi

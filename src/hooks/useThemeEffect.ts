@@ -19,10 +19,15 @@ export const getTheme: () => ThemeType = () => {
 const useThemeEffect = () => {
   useEffect(() => {
     if (typeof document !== "object") return
-    if (getTheme() === "dark") {
+    const theme = getTheme()
+    if (theme === "dark") {
       document.documentElement.classList.add("dark")
+      document.documentElement.classList.add("notion-dark")
+      document.documentElement.classList.remove("notion-light")
     } else {
       document.documentElement.classList.remove("dark")
+      document.documentElement.classList.add("notion-light")
+      document.documentElement.classList.remove("notion-dark")
     }
   }, [])
 }

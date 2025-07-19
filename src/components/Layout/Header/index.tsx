@@ -27,28 +27,23 @@ const Header: React.FC<Props> = ({ fullWidth }) => {
           : "bg-transparent"
       }`}
     >
-      <nav className={`${fullWidth ? "px-6 md:px-12" : "container"} flex h-16 items-center justify-between`}>
+      <div className={fullWidth ? "w-full px-6 md:px-12" : "container"}>
+        <nav className="mx-auto max-w-7xl flex h-16 items-center justify-between">
         {/* Logo */}
-        <Link href="/">
-          <a className="flex items-center gap-2 text-xl font-bold text-gray-900 transition-colors hover:text-gray-600 dark:text-gray-100 dark:hover:text-gray-400">
-            <span className="gradient-text">Tech</span>
-            <span className="hidden sm:inline">Blog</span>
-          </a>
+        <Link href="/" className="flex items-center gap-2 text-xl font-bold text-gray-900 transition-colors hover:text-gray-600 dark:text-gray-100 dark:hover:text-gray-400">
+          <span className="gradient-text">Tech</span>
+          <span className="hidden sm:inline">Blog</span>
         </Link>
         
         {/* Navigation */}
         <div className="flex items-center gap-6">
           {/* Nav Links */}
           <div className="hidden md:flex items-center gap-6">
-            <Link href="/">
-              <a className="text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">
-                Articles
-              </a>
+            <Link href="/" className="text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">
+              Articles
             </Link>
-            <Link href="/about">
-              <a className="text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">
-                About
-              </a>
+            <Link href="/about" className="text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">
+              About
             </Link>
             <a
               href={`https://github.com/${CONFIG.profile.github}`}
@@ -70,7 +65,8 @@ const Header: React.FC<Props> = ({ fullWidth }) => {
             </svg>
           </button>
         </div>
-      </nav>
+        </nav>
+      </div>
     </header>
   )
 }

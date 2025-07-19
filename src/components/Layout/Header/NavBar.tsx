@@ -15,17 +15,15 @@ const NavBar: React.FC = () => {
           const isActive = router.pathname === link.to
           return (
             <li key={link.id}>
-              <Link href={link.to}>
-                <a className={`
-                  px-3 py-2 rounded-lg text-sm font-medium
-                  transition-all duration-200
-                  ${isActive 
-                    ? 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100' 
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800/50'
-                  }
-                `}>
-                  {link.name}
-                </a>
+              <Link href={link.to} className={`
+                px-3 py-2 rounded-lg text-sm font-medium
+                transition-all duration-200
+                ${isActive 
+                  ? 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100' 
+                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800/50'
+                }
+              `}>
+                {link.name}
               </Link>
             </li>
           )

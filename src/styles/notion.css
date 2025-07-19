@@ -49,18 +49,47 @@ svg + .notion-page-title-text {
 }
 
 .notion-code {
-  @apply bg-gray-50 dark:bg-gray-900/50;
   @apply border border-gray-200 dark:border-gray-700;
   @apply rounded-lg;
   @apply my-4;
+  width: 100%;
+  display: block;
+  position: relative;
+}
+
+.notion-light .notion-code {
+  @apply border-gray-200;
+}
+
+.notion-dark .notion-code {
+  @apply border-gray-700;
 }
 
 .notion-code > code {
-  @apply text-gray-800 dark:text-gray-200;
   @apply bg-transparent;
   @apply text-sm;
+  display: block;
+  width: 100%;
+  overflow-x: auto;
 }
 
+/* Code blocks for light mode - GitHub style */
+.notion-light pre[class*="language-"] {
+  @apply border border-gray-200;
+  @apply rounded-md;
+  @apply p-4;
+  @apply my-4;
+  @apply overflow-x-auto;
+}
+
+.notion-light pre[class*="language-"] code {
+  @apply font-mono;
+  @apply text-sm;
+  background-color: transparent !important;
+}
+
+/* Code blocks for dark mode */
+.notion-dark pre[class*="language-"],
 pre[class*="language-"] {
   line-height: 1.5;
   @apply bg-gray-900 dark:bg-black;
@@ -71,6 +100,7 @@ pre[class*="language-"] {
   @apply border border-gray-700 dark:border-gray-800;
 }
 
+.notion-dark pre[class*="language-"] code,
 pre[class*="language-"] code {
   @apply font-mono;
   @apply text-sm;
@@ -103,7 +133,31 @@ pre[class*="language-"] code {
 .notion-page {
   @apply w-auto;
   @apply px-0;
-  @apply overflow-scroll;
+  @apply overflow-visible;
+  @apply max-w-none !important;
+}
+
+/* NotionRenderer 컨테이너 너비 제한 */
+.notion-page-content {
+  @apply max-w-none !important;
+  width: 100% !important;
+}
+
+.notion-page-content-inner {
+  @apply max-w-none !important;
+  width: 100% !important;
+}
+
+/* notion-page-no-cover 클래스 오버라이드 */
+.notion-page-no-cover {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* notion-app-inner 클래스 오버라이드 */
+.notion-app-inner {
+  @apply max-w-none !important;
+  width: 100% !important;
 }
 .notion-quote {
   padding: 0.2em 0.9em;

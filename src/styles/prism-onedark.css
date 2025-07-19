@@ -1,0 +1,261 @@
+/* One Dark Pro theme for Prism.js */
+
+/* Base styles for all code */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #abb2bf;
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  font-size: 14px;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  overflow: auto;
+  background: #282c34 !important;
+  border: 1px solid #3e4451;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+/* Dark mode code blocks */
+.notion-dark pre[class*="language-"] {
+  background: #1e1e1e !important;
+  border-color: #2d2d30;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  background: #3a3f4b;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  white-space: normal;
+  color: #abb2bf;
+}
+
+.notion-dark :not(pre) > code[class*="language-"] {
+  background: #2d2d30;
+}
+
+/* Comments */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #5c6370;
+  font-style: italic;
+}
+
+/* Purple - Keywords */
+.token.keyword,
+.token.control,
+.token.directive,
+.token.unit,
+.token.statement,
+.token.atrule {
+  color: #c678dd !important;
+}
+
+/* Green - Strings */
+.token.string,
+.token.char,
+.token.attr-value,
+.token.inserted {
+  color: #98c379 !important;
+}
+
+/* Blue - Functions and Classes */
+.token.function,
+.token.class-name,
+.token.class,
+.token.decorator,
+.token.title.class_ {
+  color: #61afef !important;
+}
+
+/* Orange - Properties, Numbers */
+.token.property,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.boolean,
+.token.builtin {
+  color: #d19a66 !important;
+}
+
+/* Pink/Red - Variables, Tags */
+.token.variable,
+.token.tag,
+.token.selector,
+.token.attr-name,
+.token.entity,
+.token.url {
+  color: #e06c75 !important;
+}
+
+/* Cyan - Regex, Important */
+.token.regex,
+.token.important {
+  color: #56b6c2 !important;
+}
+
+/* Operators */
+.token.operator,
+.token.punctuation {
+  color: #abb2bf;
+}
+
+/* Namespace */
+.token.namespace {
+  opacity: 0.7;
+}
+
+/* Bold */
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+/* Italic */
+.token.italic {
+  font-style: italic;
+}
+
+/* Entity */
+.token.entity {
+  cursor: help;
+}
+
+/* Deleted */
+.token.deleted {
+  color: #e06c75;
+  background: rgba(224, 108, 117, 0.15);
+}
+
+/* Selection */
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection {
+  background: #3e4451;
+  color: inherit;
+}
+
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+  background: #3e4451;
+  color: inherit;
+}
+
+/* Make sure notion-code doesn't override our styles */
+.notion-code {
+  background: none !important;
+}
+
+.notion-code > code {
+  background: none !important;
+  padding: 0 !important;
+}
+
+/* Language specific improvements */
+.language-css .token.property,
+.language-scss .token.property {
+  color: #d19a66 !important;
+}
+
+.language-html .token.tag {
+  color: #e06c75 !important;
+}
+
+.language-html .token.attr-name {
+  color: #d19a66 !important;
+}
+
+.language-html .token.attr-value {
+  color: #98c379 !important;
+}
+
+.language-javascript .token.keyword,
+.language-js .token.keyword,
+.language-typescript .token.keyword,
+.language-ts .token.keyword,
+.language-jsx .token.keyword,
+.language-tsx .token.keyword {
+  color: #c678dd !important;
+}
+
+.language-javascript .token.string,
+.language-js .token.string,
+.language-typescript .token.string,
+.language-ts .token.string,
+.language-jsx .token.string,
+.language-tsx .token.string {
+  color: #98c379 !important;
+}
+
+.language-javascript .token.function,
+.language-js .token.function,
+.language-typescript .token.function,
+.language-ts .token.function,
+.language-jsx .token.function,
+.language-tsx .token.function {
+  color: #61afef !important;
+}
+
+.language-javascript .token.number,
+.language-js .token.number,
+.language-typescript .token.number,
+.language-ts .token.number,
+.language-jsx .token.number,
+.language-tsx .token.number {
+  color: #d19a66 !important;
+}
+
+/* SQL specific */
+.language-sql .token.keyword {
+  color: #c678dd !important;
+  text-transform: none;
+}
+
+.language-sql .token.function {
+  color: #61afef !important;
+}
+
+.language-sql .token.number {
+  color: #d19a66 !important;
+}
+
+.language-sql .token.string {
+  color: #98c379 !important;
+}
+
+/* Bash specific */
+.language-bash .token.function,
+.language-shell .token.function {
+  color: #61afef !important;
+}
+
+.language-bash .token.keyword,
+.language-shell .token.keyword {
+  color: #c678dd !important;
+}
+
+.language-bash .token.string,
+.language-shell .token.string {
+  color: #98c379 !important;
+}

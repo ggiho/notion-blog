@@ -22,6 +22,7 @@ NotFoundPage.getLayout = function getlayout(page) {
         type: "website",
         url: CONFIG.link,
       }}
+      fullWidth={true}
     >
       {page}
     </Layout>

@@ -1,0 +1,347 @@
+/* morethan-log theme for Prism.js */
+
+/* Base styles for all code */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #cccccc;
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  font-size: 14px;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks with max height and scroll */
+pre[class*="language-"] {
+  overflow: auto;
+  background: #2d2d2d !important;
+  border: 1px solid #3e3e3e;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 0;
+  max-height: 600px; /* Increased height */
+  overflow-y: auto;
+  overflow-x: auto;
+  position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: #4a4a4a transparent;
+}
+
+/* Show copy button on hover */
+pre[class*="language-"]:hover .copy-button {
+  opacity: 1;
+}
+
+/* Light mode code blocks - Use dark theme for better readability */
+.notion-light pre[class*="language-"] {
+  background: #2d2d2d !important;
+  border: 1px solid #3e3e3e;
+  color: #cccccc;
+}
+
+.notion-light pre[class*="language-"] code {
+  color: #cccccc !important;
+}
+
+/* Custom scrollbar for webkit browsers - Dark mode */
+pre[class*="language-"]::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 4px;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-thumb {
+  background-color: #4a4a4a;
+  border-radius: 4px;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-thumb:hover {
+  background-color: #5a5a5a;
+}
+
+/* Light mode scrollbar - Same as dark for consistency */
+.notion-light pre[class*="language-"]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.notion-light pre[class*="language-"]::-webkit-scrollbar-thumb {
+  background-color: #4a4a4a;
+  border-radius: 4px;
+}
+
+.notion-light pre[class*="language-"]::-webkit-scrollbar-thumb:hover {
+  background-color: #5a5a5a;
+}
+
+/* Dark mode code blocks - same as light for consistency */
+.notion-dark pre[class*="language-"] {
+  background: #2d2d2d !important;
+  border-color: #3e3e3e;
+}
+
+/* 라이트모드에서도 다크 테마 토큰 색상 사용 */
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  background: #2d2d2d;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  white-space: normal;
+  color: #cccccc;
+}
+
+.notion-dark :not(pre) > code[class*="language-"] {
+  background: #2d2d2d;
+}
+
+/* Comments */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #999999;
+  font-style: italic;
+}
+
+/* Purple - Keywords */
+.token.keyword,
+.token.control,
+.token.directive,
+.token.unit,
+.token.statement,
+.token.atrule,
+.token.constant {
+  color: #cc99cd !important;
+}
+
+/* Green - Strings */
+.token.string,
+.token.char,
+.token.attr-value,
+.token.inserted {
+  color: #7ec699 !important;
+}
+
+/* Orange - Functions */
+.token.function {
+  color: #f08d49 !important;
+}
+
+/* Yellow-Orange - Properties, Numbers */
+.token.property,
+.token.number,
+.token.symbol,
+.token.boolean,
+.token.builtin,
+.token.class-name {
+  color: #f8c555 !important;
+}
+
+/* Cyan - Operators */
+.token.operator,
+.token.entity,
+.token.url,
+.token.regex,
+.token.important,
+.token.variable {
+  color: #67cdcc !important;
+}
+
+/* Light purple - Tags, Selectors */
+.token.tag,
+.token.selector,
+.token.attr-name {
+  color: #cc99cd !important;
+}
+
+/* Punctuation - Make parentheses more visible */
+.token.punctuation {
+  color: #999999 !important;
+  font-weight: 600;
+}
+
+/* Namespace */
+.token.namespace {
+  opacity: 0.7;
+}
+
+/* Bold */
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+/* Italic */
+.token.italic {
+  font-style: italic;
+}
+
+/* Entity */
+.token.entity {
+  cursor: help;
+}
+
+/* Deleted */
+.token.deleted {
+  color: #f08d49;
+  background: rgba(240, 141, 73, 0.15);
+}
+
+/* Selection */
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection {
+  background: #3e3e3e;
+  color: inherit;
+}
+
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+  background: #3e3e3e;
+  color: inherit;
+}
+
+/* Scrollbar styling */
+pre[class*="language-"]::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-track {
+  background: #2d2d2d;
+  border-radius: 4px;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-thumb {
+  background: #4e4e4e;
+  border-radius: 4px;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-thumb:hover {
+  background: #5e5e5e;
+}
+
+/* Make sure notion-code doesn't override our styles */
+.notion-code {
+  background: none !important;
+}
+
+.notion-code > code {
+  background: none !important;
+  padding: 0 !important;
+}
+
+/* Hide default notion code copy button */
+.notion-code-copy {
+  display: none !important;
+}
+
+/* Style for copy button wrapper */
+.relative.group {
+  position: relative;
+}
+
+/* Language specific improvements */
+.language-css .token.property,
+.language-scss .token.property {
+  color: #f8c555 !important;
+}
+
+.language-html .token.tag {
+  color: #cc99cd !important;
+}
+
+.language-html .token.attr-name {
+  color: #f8c555 !important;
+}
+
+.language-html .token.attr-value {
+  color: #7ec699 !important;
+}
+
+.language-javascript .token.keyword,
+.language-js .token.keyword,
+.language-typescript .token.keyword,
+.language-ts .token.keyword,
+.language-jsx .token.keyword,
+.language-tsx .token.keyword {
+  color: #cc99cd !important;
+}
+
+.language-javascript .token.string,
+.language-js .token.string,
+.language-typescript .token.string,
+.language-ts .token.string,
+.language-jsx .token.string,
+.language-tsx .token.string {
+  color: #7ec699 !important;
+}
+
+.language-javascript .token.function,
+.language-js .token.function,
+.language-typescript .token.function,
+.language-ts .token.function,
+.language-jsx .token.function,
+.language-tsx .token.function {
+  color: #f08d49 !important;
+}
+
+.language-javascript .token.number,
+.language-js .token.number,
+.language-typescript .token.number,
+.language-ts .token.number,
+.language-jsx .token.number,
+.language-tsx .token.number {
+  color: #f8c555 !important;
+}
+
+/* SQL specific */
+.language-sql .token.keyword {
+  color: #cc99cd !important;
+  text-transform: none;
+}
+
+.language-sql .token.function {
+  color: #f08d49 !important;
+}
+
+.language-sql .token.number {
+  color: #f8c555 !important;
+}
+
+.language-sql .token.string {
+  color: #7ec699 !important;
+}
+
+/* Bash specific */
+.language-bash .token.function,
+.language-shell .token.function {
+  color: #f08d49 !important;
+}
+
+.language-bash .token.keyword,
+.language-shell .token.keyword {
+  color: #cc99cd !important;
+}
+
+.language-bash .token.string,
+.language-shell .token.string {
+  color: #7ec699 !important;
+}

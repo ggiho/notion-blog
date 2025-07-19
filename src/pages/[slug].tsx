@@ -55,17 +55,17 @@ const DetailPage: NextPageWithLayout<Props> = ({ post, blockMap }) => {
   return <Detail blockMap={blockMap} data={post} />
 }
 
-DetailPage.getLayout = function getlayout(page) {
+DetailPage.getLayout = function getlayout(page: any) {
   const getImage = () => {
-    if (page.props?.post.thumbnail) return page.props?.post.thumbnail
-    if (CONFIG.ogImageGenerateURL)
+    if (page.props?.post?.thumbnail) return page.props?.post.thumbnail
+    if (CONFIG.ogImageGenerateURL && page.props?.post?.title)
       return `${CONFIG.ogImageGenerateURL}/${encodeURIComponent(
         page.props?.post.title
       )}.png?theme=dark&md=1&fontSize=125px&images=https%3A%2F%2Fnotion_blog.vercel.app%2Flogo-for-dark-bg.svg`
   }
 
   const getMetaConfig = () => {
-    if (!page.props.post) {
+    if (!page.props?.post) {
       return {
         title: CONFIG.blog.title,
         description: CONFIG.blog.description,
@@ -74,18 +74,18 @@ DetailPage.getLayout = function getlayout(page) {
       }
     }
     return {
-      title: page.props.post.title || CONFIG.blog.title,
+      title: page.props?.post?.title || CONFIG.blog.title,
       date: new Date(
-        page.props.post.date?.start_date || page.props.post.createdTime || ""
+        page.props?.post?.date?.start_date || page.props?.post?.createdTime || ""
       ).toISOString(),
       image: getImage(),
-      description: page.props.post.summary,
-      type: page.props.post.type[0],
-      url: `${CONFIG.link}/${page.props.post.slug}`,
+      description: page.props?.post?.summary,
+      type: page.props?.post?.type?.[0] || "website",
+      url: `${CONFIG.link}/${page.props?.post?.slug || ""}`,
     }
   }
   return (
-    <Layout metaConfig={getMetaConfig()} fullWidth={page.props.post?.fullWidth}>
+    <Layout metaConfig={getMetaConfig()} fullWidth={true}>
       {page}
     </Layout>
   )

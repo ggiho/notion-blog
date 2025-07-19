@@ -78,7 +78,7 @@ const PostHeader: React.FC<Props> = ({ data }) => {
             <Image
               src={data.thumbnail}
               className="object-cover"
-              layout="fill"
+              fill
               alt={data.title}
               priority
             />

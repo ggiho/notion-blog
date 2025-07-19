@@ -35,24 +35,18 @@ const Footer: React.FC<Props> = ({ className }) => {
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/">
-                  <a className="text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">
-                    Home
-                  </a>
+                <Link href="/" className="text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">
+                  Home
                 </Link>
               </li>
               <li>
-                <Link href="/about">
-                  <a className="text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">
-                    About
-                  </a>
+                <Link href="/about" className="text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">
+                  About
                 </Link>
               </li>
               <li>
-                <Link href="/feed">
-                  <a className="text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">
-                    RSS Feed
-                  </a>
+                <Link href="/feed" className="text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">
+                  RSS Feed
                 </Link>
               </li>
             </ul>

@@ -108,7 +108,7 @@ const TableOfContents: React.FC<Props> = ({ blockMap }) => {
               >
                 {/* Active indicator */}
                 {isActive && (
-                  <div className="absolute -left-0.5 top-1/2 -translate-y-1/2 w-1 h-8 bg-gradient-to-b from-amber-500 to-orange-500 rounded-full transition-all duration-300" />
+                  <div className="absolute -left-0.5 top-1/2 -translate-y-1/2 w-1 h-8 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full transition-all duration-300" />
                 )}
                 
                 <button
@@ -116,20 +116,15 @@ const TableOfContents: React.FC<Props> = ({ blockMap }) => {
                   className={`
                     block w-full text-left py-2 px-3 text-sm rounded-lg transition-all duration-200
                     ${isActive
-                      ? 'text-amber-700 dark:text-amber-400 font-semibold bg-amber-50 dark:bg-amber-900/20'
-                      : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-800/50'
+                      ? 'text-gray-900 dark:text-gray-100 font-semibold bg-gray-100 dark:bg-gray-800'
+                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800/50'
                     }
                   `}
                 >
                   <span className="line-clamp-2 leading-tight">
-                    {item.level > 1 && <span className="text-neutral-400 dark:text-neutral-600 mr-1">•</span>}
+                    {item.level > 1 && <span className="text-gray-400 dark:text-gray-600 mr-1">•</span>}
                     {item.text}
                   </span>
-                  {isActive && (
-                    <div className="text-xs text-amber-600 dark:text-amber-500 mt-0.5">
-                      현재 위치
-                    </div>
-                  )}
                 </button>
               </li>
             )
