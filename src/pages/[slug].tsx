@@ -6,6 +6,7 @@ import { NextPageWithLayout } from "@pages/_app"
 import { TPost } from "../types"
 import CustomError from "@containers/CustomError"
 import { getPostBlocks, getPosts } from "@libs/apis"
+import { useRouter } from "next/router"
 
 export async function getStaticPaths() {
   const posts = await getPosts()
@@ -16,7 +17,7 @@ export async function getStaticPaths() {
 
   return {
     paths: filteredPost.map((row) => `/${row.slug}`),
-    fallback: 'blocking',
+    fallback: true, // 'blocking'에서 true로 변경
   }
 }
 
@@ -35,12 +36,13 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
 
     return {
       props: { post, blockMap },
-      revalidate: 3600, // 1시간마다 자동 재검증
+      revalidate: 60, // 1분마다 재검증으로 변경 (더 자주 업데이트)
     }
   } catch (error) {
+    console.error(`Error fetching post with slug: ${slug}`, error)
     return {
-      props: {},
-      revalidate: 60, // 60초마다 자동 재검증
+      notFound: true, // 에러 시 404 페이지로 리다이렉트
+      revalidate: 10, // 10초 후 재시도
     }
   }
 }
@@ -51,6 +53,20 @@ type Props = {
 }
 
 const DetailPage: NextPageWithLayout<Props> = ({ post, blockMap }) => {
+  // fallback 상태 처리
+  const router = useRouter()
+  
+  if (router.isFallback) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 dark:border-white mx-auto"></div>
+          <p className="mt-4 text-gray-600 dark:text-gray-400">Loading...</p>
+        </div>
+      </div>
+    )
+  }
+  
   if (!post) return <CustomError />
   return <Detail blockMap={blockMap} data={post} />
 }

@@ -15,20 +15,41 @@ import TableOfContents from "./TableOfContents"
 import dynamic from "next/dynamic"
 
 // Prism을 동적으로 로드
-const loadPrism = () => {
+const loadPrism = async () => {
   if (typeof window !== 'undefined') {
-    const Prism = require('prismjs')
-    require('prismjs/components/prism-javascript')
-    require('prismjs/components/prism-typescript')
-    require('prismjs/components/prism-jsx')
-    require('prismjs/components/prism-tsx')
-    require('prismjs/components/prism-css')
-    require('prismjs/components/prism-python')
-    require('prismjs/components/prism-bash')
-    require('prismjs/components/prism-json')
-    require('prismjs/components/prism-markdown')
-    require('prismjs/components/prism-sql')
-    return Prism
+    try {
+      const Prism = (await import('prismjs')).default
+      
+      // 언어 컴포넌트를 동적으로 로드
+      await Promise.all([
+        // 자주 사용되는 언어들
+        import('prismjs/components/prism-javascript'),
+        import('prismjs/components/prism-typescript'),
+        import('prismjs/components/prism-jsx'),
+        import('prismjs/components/prism-tsx'),
+        import('prismjs/components/prism-css'),
+        import('prismjs/components/prism-python'),
+        import('prismjs/components/prism-bash'),
+        import('prismjs/components/prism-json'),
+        import('prismjs/components/prism-markdown'),
+        import('prismjs/components/prism-sql'),
+        import('prismjs/components/prism-lua'),
+        // 추가 언어 지원
+        import('prismjs/components/prism-go'),
+        import('prismjs/components/prism-rust'),
+        import('prismjs/components/prism-java'),
+        import('prismjs/components/prism-c'),
+        import('prismjs/components/prism-cpp'),
+        import('prismjs/components/prism-yaml'),
+        import('prismjs/components/prism-docker'),
+        import('prismjs/components/prism-vim')
+      ])
+      
+      return Prism
+    } catch (error) {
+      console.error('Failed to load Prism:', error)
+      return null
+    }
   }
   return null
 }
@@ -46,11 +67,12 @@ const PostDetail: React.FC<Props> = ({ blockMap, data }) => {
   const category = (data.category && data.category?.[0]) || undefined
 
   useEffect(() => {
-    const Prism = loadPrism()
-    if (Prism) {
-      // 약간의 지연 후 하이라이팅 적용
-      setTimeout(() => {
-        Prism.highlightAll()
+    const initPrism = async () => {
+      const Prism = await loadPrism()
+      if (Prism) {
+        // 약간의 지연 후 하이라이팅 적용
+        setTimeout(() => {
+          Prism.highlightAll()
         
         // 코드블럭에 복사 버튼 추가
         const codeBlocks = document.querySelectorAll('pre[class*="language-"]')
@@ -80,7 +102,10 @@ const PostDetail: React.FC<Props> = ({ blockMap, data }) => {
           }
         })
       }, 100)
+      }
     }
+    
+    initPrism()
   }, [blockMap])
 
   return (
