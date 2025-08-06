@@ -33,7 +33,9 @@ const Hero: React.FC = () => {
           
           {/* Bio */}
           <p className="mx-auto mb-10 max-w-xl text-lg text-gray-500 dark:text-gray-500">
-            {CONFIG.profile.bio} · 데이터베이스 성능 최적화와 아키텍처 설계에 관심이 많습니다.
+            {CONFIG.profile.bio}
+            <br />
+            데이터베이스 성능 최적화와 아키텍처 설계에 관심이 많습니다.
           </p>
           
           {/* CTA Buttons */}
@@ -63,7 +65,7 @@ const Hero: React.FC = () => {
           {/* Stats */}
           <div className="mt-16 grid grid-cols-3 gap-8 border-t border-gray-200 pt-8 dark:border-gray-800">
             <div>
-              <div className="text-3xl font-bold text-gray-900 dark:text-gray-100">5+</div>
+              <div className="text-3xl font-bold text-gray-900 dark:text-gray-100">8+</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">Years Experience</div>
             </div>
             <div>

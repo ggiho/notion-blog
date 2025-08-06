@@ -1,7 +1,23 @@
 import { NotionAPI } from 'notion-client'
 
 export async function getPostBlocks(id: string) {
-  const api = new NotionAPI()
-  const pageBlock = await api.getPage(id)
-  return pageBlock
+  try {
+    const api = new NotionAPI({
+      activeUser: process.env.NOTION_ACTIVE_USER || '',
+      authToken: process.env.NOTION_TOKEN_V2 || '',
+      userTimeZone: 'Asia/Seoul',
+    })
+    
+    const pageBlock = await api.getPage(id)
+    
+    if (!pageBlock) {
+      console.error(`Failed to fetch page blocks for id: ${id}`)
+      throw new Error('Page blocks not found')
+    }
+    
+    return pageBlock
+  } catch (error) {
+    console.error(`Error fetching post blocks for id ${id}:`, error)
+    throw error
+  }
 }

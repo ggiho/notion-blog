@@ -58,7 +58,7 @@ const DetailPage: NextPageWithLayout<Props> = ({ post, blockMap }) => {
   
   if (router.isFallback) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex justify-center items-center min-h-screen bg-gray-50 dark:bg-black">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 dark:border-white mx-auto"></div>
           <p className="mt-4 text-gray-600 dark:text-gray-400">Loading...</p>
@@ -67,7 +67,7 @@ const DetailPage: NextPageWithLayout<Props> = ({ post, blockMap }) => {
     )
   }
   
-  if (!post) return <CustomError />
+  if (!post || !blockMap) return <CustomError />
   return <Detail blockMap={blockMap} data={post} />
 }
 
