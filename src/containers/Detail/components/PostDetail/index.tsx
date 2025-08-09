@@ -21,14 +21,23 @@ const loadPrism = async () => {
       const Prism = (await import('prismjs')).default
       
       // 기본 언어 컴포넌트만 로드 (순차적으로)
+      // @ts-ignore: PrismJS components don't have type declarations
       await import('prismjs/components/prism-javascript')
+      // @ts-ignore: PrismJS components don't have type declarations
       await import('prismjs/components/prism-typescript')
+      // @ts-ignore: PrismJS components don't have type declarations
       await import('prismjs/components/prism-jsx')
+      // @ts-ignore: PrismJS components don't have type declarations
       await import('prismjs/components/prism-tsx')
+      // @ts-ignore: PrismJS components don't have type declarations
       await import('prismjs/components/prism-css')
+      // @ts-ignore: PrismJS components don't have type declarations
       await import('prismjs/components/prism-python')
+      // @ts-ignore: PrismJS components don't have type declarations
       await import('prismjs/components/prism-bash')
+      // @ts-ignore: PrismJS components don't have type declarations
       await import('prismjs/components/prism-json')
+      // @ts-ignore: PrismJS components don't have type declarations
       await import('prismjs/components/prism-sql')
       
       return Prism
