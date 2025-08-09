@@ -1,9 +1,12 @@
 /* NOTION CSS OVERRIDE */
 
 .notion {
-  font-family: Pretendard, Roboto, sans-serif;
+  font-family: 'Pretendard', 'Inter', Roboto, sans-serif;
+  font-weight: 400;
   @apply text-gray-600 dark:text-gray-300;
   overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 .notion,
 .notion-text,

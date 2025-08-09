@@ -65,7 +65,7 @@ const Hero: React.FC = () => {
           {/* Stats */}
           <div className="mt-16 grid grid-cols-3 gap-8 border-t border-gray-200 pt-8 dark:border-gray-800">
             <div>
-              <div className="text-3xl font-bold text-gray-900 dark:text-gray-100">8+</div>
+              <div className="text-3xl font-bold text-gray-900 dark:text-gray-100">5+</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">Years Experience</div>
             </div>
             <div>
