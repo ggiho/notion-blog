@@ -8,7 +8,11 @@ async function getPageProperties(
   block: BlockMap,
   schema: CollectionPropertySchemaMap
 ) {
-  const api = new NotionAPI()
+  const api = new NotionAPI({
+    activeUser: process.env.NOTION_ACTIVE_USER || '',
+    authToken: process.env.NOTION_TOKEN_V2 || '',
+    userTimeZone: 'Asia/Seoul',
+  })
   const rawProperties = Object.entries(block?.[id]?.value?.properties || [])
   const excludeProperties = ["date", "select", "multi_select", "person", "file"]
   const properties: any = {}
@@ -57,18 +61,28 @@ async function getPageProperties(
           for (let i = 0; i < rawUsers.length; i++) {
             if (rawUsers[i][0][1]) {
               const userId = rawUsers[i][0]
-              const res: any = await api.getUsers(userId)
-              const resValue =
-                res?.recordMapWithRoles?.notion_user?.[userId[1]]?.value
-              const user = {
-                id: resValue?.id,
-                name:
-                  resValue?.name ||
-                  `${resValue?.family_name}${resValue?.given_name}` ||
-                  undefined,
-                profile_photo: resValue?.profile_photo || null,
+              try {
+                const res: any = await api.getUsers(userId)
+                const resValue =
+                  res?.recordMapWithRoles?.notion_user?.[userId[1]]?.value
+                const user = {
+                  id: resValue?.id,
+                  name:
+                    resValue?.name ||
+                    `${resValue?.family_name}${resValue?.given_name}` ||
+                    undefined,
+                  profile_photo: resValue?.profile_photo || null,
+                }
+                users.push(user)
+              } catch (error) {
+                console.error(`Failed to fetch user info for ${userId[1]}:`, error)
+                // Add fallback user info
+                users.push({
+                  id: userId[1],
+                  name: 'Unknown User',
+                  profile_photo: null,
+                })
               }
-              users.push(user)
             }
           }
           properties[schema[key].name] = users
