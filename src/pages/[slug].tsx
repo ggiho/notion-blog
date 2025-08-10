@@ -35,7 +35,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
     const blockMap = await getPostBlocks(post.id)
 
     // 큰 페이지 데이터 최적화 - blockMap 압축
-    const optimizedBlockMap = { ...blockMap }
+    const optimizedBlockMap: any = { ...blockMap }
     // 불필요한 메타데이터 제거로 데이터 크기 감소
     delete optimizedBlockMap.signed_urls
     delete optimizedBlockMap.preview_images
