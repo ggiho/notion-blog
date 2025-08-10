@@ -6,6 +6,7 @@ import { NextPageWithLayout } from "@pages/_app"
 import { TPost } from "../types"
 import CustomError from "@containers/CustomError"
 import { getPostBlocks, getPosts } from "@libs/apis"
+import { optimizeBlockMap } from "@libs/utils/optimizeBlockMap"
 import { useRouter } from "next/router"
 
 export async function getStaticPaths() {
@@ -34,11 +35,8 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
     }
     const blockMap = await getPostBlocks(post.id)
 
-    // 큰 페이지 데이터 최적화 - blockMap 압축
-    const optimizedBlockMap: any = { ...blockMap }
-    // 불필요한 메타데이터 제거로 데이터 크기 감소
-    delete optimizedBlockMap.signed_urls
-    delete optimizedBlockMap.preview_images
+    // 스마트 blockMap 최적화 - 사용자 데이터 보존하면서 크기 축소
+    const optimizedBlockMap = optimizeBlockMap(blockMap, post.slug)
 
     return {
       props: { post, blockMap: optimizedBlockMap },

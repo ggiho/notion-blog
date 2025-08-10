@@ -11,6 +11,12 @@ import { TPosts } from "@/src/types"
 
 export async function getPosts() {
   let id = CONFIG.notionConfig.pageId as string
+  
+  // 환경변수 검증
+  if (!id || id === 'undefined') {
+    throw new Error('NOTION_PAGE_ID environment variable is required but not set')
+  }
+  
   const api = new NotionAPI()
   const response = await api.getPage(id)
   id = idToUuid(id)

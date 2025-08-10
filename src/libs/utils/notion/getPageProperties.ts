@@ -8,13 +8,9 @@ async function getPageProperties(
   block: BlockMap,
   schema: CollectionPropertySchemaMap
 ) {
-  const api = new NotionAPI({
-    activeUser: process.env.NOTION_ACTIVE_USER || '',
-    authToken: process.env.NOTION_TOKEN_V2 || '',
-    userTimeZone: 'Asia/Seoul',
-  })
+  const api = new NotionAPI()
   const rawProperties = Object.entries(block?.[id]?.value?.properties || [])
-  const excludeProperties = ["date", "select", "multi_select", "person", "file"]
+  const excludeProperties = ["date", "select", "multi_select", "file"]
   const properties: any = {}
   for (let i = 0; i < rawProperties.length; i++) {
     const [key, val]: any = rawProperties[i]
@@ -55,37 +51,8 @@ async function getPageProperties(
           break
         }
         case "person": {
-          const rawUsers = val.flat()
-
-          const users = []
-          for (let i = 0; i < rawUsers.length; i++) {
-            if (rawUsers[i][0][1]) {
-              const userId = rawUsers[i][0]
-              try {
-                const res: any = await api.getUsers(userId)
-                const resValue =
-                  res?.recordMapWithRoles?.notion_user?.[userId[1]]?.value
-                const user = {
-                  id: resValue?.id,
-                  name:
-                    resValue?.name ||
-                    `${resValue?.family_name}${resValue?.given_name}` ||
-                    undefined,
-                  profile_photo: resValue?.profile_photo || null,
-                }
-                users.push(user)
-              } catch (error) {
-                console.error(`Failed to fetch user info for ${userId[1]}:`, error)
-                // Add fallback user info
-                users.push({
-                  id: userId[1],
-                  name: 'Unknown User',
-                  profile_photo: null,
-                })
-              }
-            }
-          }
-          properties[schema[key].name] = users
+          // Person 프로퍼티는 빌드 시 "missing user" 에러 원인이므로 빈 배열로 처리
+          properties[schema[key].name] = []
           break
         }
         default:

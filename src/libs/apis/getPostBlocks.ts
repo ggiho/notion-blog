@@ -2,11 +2,7 @@ import { NotionAPI } from 'notion-client'
 
 export async function getPostBlocks(id: string) {
   try {
-    const api = new NotionAPI({
-      activeUser: process.env.NOTION_ACTIVE_USER || '',
-      authToken: process.env.NOTION_TOKEN_V2 || '',
-      userTimeZone: 'Asia/Seoul',
-    })
+    const api = new NotionAPI()
     
     const pageBlock = await api.getPage(id)
     
